@@ -1,0 +1,68 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "Shared references / 共享引用",
+  "language": "java",
+  "code": "public class Practice2 {\n    static int[] createPair() {\n        int[] result = {2, 8};\n        return result;\n    }\n\n    public static void main(String[] args) {\n        int[] numbers = createPair();\n        int[] alias = numbers;\n        alias[1] = 9;\n        System.out.println(numbers[1]);\n    }\n}\n",
+  "notes": "Generic demonstration at program completion. Historical values and completed scopes are retained; args is omitted. Addresses are symbolic.",
+  "diagram": {
+    "stack": [
+      {
+        "id": "main",
+        "name": "main",
+        "released": true,
+        "items": [
+          {
+            "name": "numbers",
+            "values": [
+              "0x100"
+            ]
+          },
+          {
+            "name": "alias",
+            "values": [
+              "0x100"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "createPair",
+        "name": "createPair",
+        "released": true,
+        "returnsTo": "main.numbers",
+        "items": [
+          {
+            "name": "result",
+            "values": [
+              "0x100"
+            ]
+          }
+        ]
+      }
+    ],
+    "heap": [
+      {
+        "address": "0x100",
+        "type": "int[]",
+        "items": [
+          {
+            "name": "0",
+            "values": [
+              "2"
+            ]
+          },
+          {
+            "name": "1",
+            "values": [
+              "8",
+              "9"
+            ]
+          }
+        ]
+      }
+    ],
+    "io": [
+      "9"
+    ]
+  }
+}

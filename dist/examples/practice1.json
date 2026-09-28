@@ -1,0 +1,58 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "Variable updates / 变量更新",
+  "language": "java",
+  "code": "public class Practice1 {\n    public static void main(String[] args) {\n        int total = 4;\n        total += 3;\n        System.out.println(total);\n    }\n}\n",
+  "notes": "Generic demonstration at program completion. Historical values and completed scopes are retained; args is omitted. Addresses are symbolic.",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-6",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "name": "main",
+        "stackFrameId": "frame-1",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "scope-2",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "name": "total",
+              "variableId": "variable-3",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "value": "4",
+                  "valueUpdateId": "value-4"
+                },
+                {
+                  "kind": "value-update",
+                  "value": "7",
+                  "valueUpdateId": "value-5"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-7",
+        "value": "7"
+      }
+    ]
+  }
+}

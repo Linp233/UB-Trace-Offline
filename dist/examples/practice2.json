@@ -1,0 +1,130 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "Shared references / 共享引用",
+  "language": "java",
+  "code": "public class Practice2 {\n    static int[] createPair() {\n        int[] result = {2, 8};\n        return result;\n    }\n\n    public static void main(String[] args) {\n        int[] numbers = createPair();\n        int[] alias = numbers;\n        alias[1] = 9;\n        System.out.println(numbers[1]);\n    }\n}\n",
+  "notes": "Generic demonstration at program completion. Historical values and completed scopes are retained; args is omitted. Addresses are symbolic.",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-17",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "name": "main",
+        "stackFrameId": "frame-1",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "scope-2",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "name": "numbers",
+              "variableId": "variable-3",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "value": "0x100",
+                  "valueUpdateId": "value-4"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "name": "alias",
+              "variableId": "variable-5",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "value": "0x100",
+                  "valueUpdateId": "value-6"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "name": "createPair",
+        "stackFrameId": "frame-7",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "variable-3",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "scope-8",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "name": "result",
+              "variableId": "variable-9",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "value": "0x100",
+                  "valueUpdateId": "value-10"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-11",
+        "constructorStackFrameId": null,
+        "memoryAddress": "0x100",
+        "objectType": "int[]",
+        "variables": [
+          {
+            "kind": "variable",
+            "name": "0",
+            "variableId": "variable-12",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "value": "2",
+                "valueUpdateId": "value-13"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "name": "1",
+            "variableId": "variable-14",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "value": "8",
+                "valueUpdateId": "value-15"
+              },
+              {
+                "kind": "value-update",
+                "value": "9",
+                "valueUpdateId": "value-16"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-18",
+        "value": "9"
+      }
+    ]
+  }
+}

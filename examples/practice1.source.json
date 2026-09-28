@@ -1,0 +1,29 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "Variable updates / 变量更新",
+  "language": "java",
+  "code": "public class Practice1 {\n    public static void main(String[] args) {\n        int total = 4;\n        total += 3;\n        System.out.println(total);\n    }\n}\n",
+  "notes": "Generic demonstration at program completion. Historical values and completed scopes are retained; args is omitted. Addresses are symbolic.",
+  "diagram": {
+    "stack": [
+      {
+        "id": "main",
+        "name": "main",
+        "released": true,
+        "items": [
+          {
+            "name": "total",
+            "values": [
+              "4",
+              "7"
+            ]
+          }
+        ]
+      }
+    ],
+    "heap": [],
+    "io": [
+      "7"
+    ]
+  }
+}
