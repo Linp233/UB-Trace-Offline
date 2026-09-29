@@ -2,7 +2,7 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-**Version: v0.1** · [Release notes](CHANGELOG.md) · Windows package: `Tracing-Offline-v0.1-windows-x64.zip`
+**Version: v0.1** · [Release notes](CHANGELOG.md) · [Download Windows portable ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1/Tracing-Offline-v0.1-windows-x64.zip)
 
 A local editor for practicing stack, heap and I/O diagrams. This distribution retains the published UB Trace Tool frontend and adds local saving, JSON import/export and PNG export. It does not execute or grade source code.
 

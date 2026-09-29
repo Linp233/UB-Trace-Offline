@@ -2,7 +2,7 @@
 
 [English](README.md) | **简体中文**
 
-**版本：v0.1** · [更新记录](CHANGELOG.md) · Windows 便携包：`Tracing-Offline-v0.1-windows-x64.zip`
+**版本：v0.1** · [更新记录](CHANGELOG.md) · [下载 Windows 便携 ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1/Tracing-Offline-v0.1-windows-x64.zip)
 
 用于练习 Stack、Heap 和 I/O 图的本地编辑器。保留 UB Trace Tool 已发布的前端，增加本地保存、JSON 导入导出和 PNG 导出。工具不会执行源码或自动判分。
 
