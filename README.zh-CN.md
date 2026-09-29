@@ -2,7 +2,7 @@
 
 [English](README.md) | **简体中文**
 
-**版本：v0.1** · [更新记录](CHANGELOG.md) · [下载 Windows 便携 ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1/Tracing-Offline-v0.1-windows-x64.zip)
+**版本：v0.1.1** · [更新记录](CHANGELOG.md) · [下载 Windows 便携 ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1.1/Tracing-Offline-v0.1.1-windows-x64.zip)
 
 用于练习 Stack、Heap 和 I/O 图的本地编辑器。保留 UB Trace Tool 已发布的前端，增加本地保存、JSON 导入导出和 PNG 导出。工具不会执行源码或自动判分。
 
@@ -12,13 +12,14 @@
 
 这个版本源于 Fall 2026 学期的校外练习需求。根据项目作者的使用反馈，校外访问 [UB Trace](https://tracing.cse.buffalo.edu/) 时需要先连接 UB VPN，这让日常练习多了一道网络门槛。离线版将 trace 编辑、保存和导入导出放到本机，让学生在没有校园网络或 VPN 的情况下也能继续练习。
 
-此外，离线版提供了一份可随仓库和便携包分发的 [AI / Agent 使用指引（AGENT-START.md）](AGENT-START.md)。将这份入口指引、它链接的详细规则与 JSON 格式说明，以及完整 Java 源码交给 ChatGPT、Claude 等第三方 AI 工具，即可按统一约定生成包含 Stack、Heap、变量历史和 I/O 的 trace JSON。启动离线版后，在默认地址 [http://127.0.0.1:4173/](http://127.0.0.1:4173/) 点击“导入 JSON”或“粘贴图表”，便可查看、编辑并对照自己的推导，辅助学习和核对 trace 结果。修改过端口时，以启动器打开的地址为准。AI 生成的答案仍需核对；本工具负责显示图表，不会自动判定程序语义是否正确。
+此外，离线版提供了一份可随仓库和便携包分发的 [AI / Agent 使用指引（AGENT-START.md）](AGENT-START.md)。将这份入口指引、它链接的详细规则与 JSON 格式说明，以及完整 Java 源码交给 ChatGPT、Claude 等第三方 AI 工具，即可按统一约定生成包含 Stack、Heap、变量历史和 I/O 的 trace JSON。启动离线版后，在默认地址 [http://127.0.0.1:4173/](http://127.0.0.1:4173/) 点击 **Import JSON（导入 JSON）** 或 **Paste diagram（粘贴图表）**，便可查看、编辑并对照自己的推导，辅助学习和核对 trace 结果。修改过端口时，以启动器打开的地址为准。AI 生成的答案仍需核对；本工具负责显示图表，不会自动判定程序语义是否正确。
 
 ## 快速开始
 
 1. 将 Windows x64 ZIP 完整解压到有写入权限的文件夹，不要直接从压缩包内启动。
 2. 双击 **Start-Tracing.cmd**，默认浏览器会打开本地编辑器。使用期间请保持启动命令行窗口打开。
-3. 使用结束后关闭该命令行窗口，或在窗口中按 **Ctrl+C**，本地服务会自动停止。也可以双击 **Stop-Tracing.cmd** 停止服务。仅关闭网页不会停止服务。
+3. 首次打开会出现语言选择界面，默认选中 **English**。可选择 **English** 或 **简体中文**，再点击 **Continue / 继续**；之后也可以通过工具栏的 **Language / 语言** 修改。
+4. 使用结束后关闭该命令行窗口，或在窗口中按 **Ctrl+C**，本地服务会自动停止。也可以双击 **Stop-Tracing.cmd** 停止服务。仅关闭网页不会停止服务。
 
 重复双击启动器只会打开已有服务的页面；服务仍由最初的启动窗口控制。运行信息与错误直接显示在启动窗口中。
 
@@ -48,7 +49,9 @@
 - **导出 JSON：** 备份完整的可编辑文档。
 - **导出 PNG：** 导出当前可见的图表区域。
 
-离线工具栏目前主要为中文，原画图编辑器保留现有标签。启动说明提供中英文两份。手动编写图表数据的格式见 [SCHEMA.md](SCHEMA.md)。
+**界面语言：** 默认英文。离线工具栏、弹窗、帮助、状态提示和通用示例菜单均支持 English / 简体中文，首次打开会显示语言选择界面并预选 English。点击工具栏的 **Language / 语言** 可以随时切换，不刷新页面，也不改变当前练习名称、代码、图表、历史值或 Java/Python 选项。原画图编辑器的 Stack、Heap 等标签保留英文；已有练习内容、中文题库与 agent 指引不会随界面语言自动翻译。
+
+语言选择保存在当前浏览器的当前本地地址下。换浏览器、换端口、清除站点存储或设置值无效时，会重新显示语言选择界面。浏览器存储不可用时，选择仅对本次页面会话生效，磁盘保存仍可使用。上面的按钮名称为中文模式；英文模式对应 Save copy、Open、Examples、New、Import JSON、Paste diagram、Export JSON 和 Export PNG。手动编写图表数据的格式见 [SCHEMA.md](SCHEMA.md)。
 
 让 agent 编写 Java trace 时，从 [AGENT-START.md](AGENT-START.md) 开始；其中有可直接复制给 AI 的提示词，再链接到 [CSE116 trace 编写指引](CSE116-TRACE-GUIDE.md) 和 [JSON 字段说明](SCHEMA.md)。这些公开文件不依赖本地 AGENTS.md。详细指引区分有来源的课程约定与本工具的明确默认值，说明完整原生 JSON、构造器关联、递归和验证方法。来源包括 Spring/Summer 2026 资料，不代表已确认的 Fall 考试评分细则。`examples/agent-*.trace.json` 提供两份原创参考程序对应的可导入 JSON。
 
@@ -78,7 +81,7 @@
 ```powershell
 .\runtime\node.exe scripts\examples.mjs
 .\runtime\node.exe scripts\practice\build.mjs
-.\runtime\node.exe --test tests\document.test.mjs tests\agent-examples.test.mjs tests\practice.test.mjs tests\privacy.test.mjs
+.\runtime\node.exe --test tests\document.test.mjs tests\agent-examples.test.mjs tests\practice.test.mjs tests\privacy.test.mjs tests\i18n.test.mjs
 .\runtime\node.exe --test tests\launcher.test.mjs
 .\runtime\node.exe scripts\validate.mjs
 .\runtime\node.exe scripts\audit.mjs

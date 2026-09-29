@@ -2,7 +2,7 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
-**Version: v0.1** · [Release notes](CHANGELOG.md) · [Download Windows portable ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1/Tracing-Offline-v0.1-windows-x64.zip)
+**Version: v0.1.1** · [Release notes](CHANGELOG.md) · [Download Windows portable ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1.1/Tracing-Offline-v0.1.1-windows-x64.zip)
 
 A local editor for practicing stack, heap and I/O diagrams. This distribution retains the published UB Trace Tool frontend and adds local saving, JSON import/export and PNG export. It does not execute or grade source code.
 
@@ -12,13 +12,14 @@ A local editor for practicing stack, heap and I/O diagrams. This distribution re
 
 This version grew out of a need to practice off campus during Fall 2026. The project author reports needing UB VPN to access [UB Trace](https://tracing.cse.buffalo.edu/) from off campus, adding a network requirement to everyday practice. The offline version keeps trace editing, saving, importing and exporting on the user's computer so practice can continue without a campus connection or VPN.
 
-The distribution also includes a public [AI / Agent starting guide (AGENT-START.md)](AGENT-START.md). Give that guide, its linked tracing rules and JSON specification, and the complete Java source to a third-party AI tool such as ChatGPT or Claude to generate a trace JSON with stack frames, heap objects, value histories and I/O under explicit conventions. After starting the app, open the default address [http://127.0.0.1:4173/](http://127.0.0.1:4173/) and choose “导入 JSON” (Import JSON) or “粘贴图表” (Paste diagram) to view, edit and compare it with your own trace. If you changed the port, use the address opened by the launcher. AI answers still need review; the editor displays diagrams and does not grade program semantics.
+The distribution also includes a public [AI / Agent starting guide (AGENT-START.md)](AGENT-START.md). Give that guide, its linked tracing rules and JSON specification, and the complete Java source to a third-party AI tool such as ChatGPT or Claude to generate a trace JSON with stack frames, heap objects, value histories and I/O under explicit conventions. After starting the app, open the default address [http://127.0.0.1:4173/](http://127.0.0.1:4173/) and choose “Import JSON” or “Paste diagram” to view, edit and compare it with your own trace. If you changed the port, use the address opened by the launcher. AI answers still need review; the editor displays diagrams and does not grade program semantics.
 
 ## Quick start
 
 1. Extract the complete Windows x64 ZIP into a folder you can write to. Do not run it from inside the ZIP.
 2. Double-click **Start-Tracing.cmd**. Your default browser opens the local editor. Keep the launcher console window open while using the editor.
-3. Close that console window or press **Ctrl+C** in it to stop the local service. **Stop-Tracing.cmd** can also stop it. Closing only the browser does not stop the service.
+3. On first launch, choose **English** (the default) or **简体中文**, then select **Continue**. Use **Language** in the toolbar to change it later.
+4. Close that console window or press **Ctrl+C** in it to stop the local service. **Stop-Tracing.cmd** can also stop it. Closing only the browser does not stop the service.
 
 Starting again opens the existing service in your browser; the original launcher window still controls its lifetime. Runtime messages and errors appear directly in the launcher window.
 
@@ -40,15 +41,17 @@ Choose an unused integer port from 1 to 65535. The service only listens on `127.
 
 ## Using the editor
 
-- **保存副本 (Save copy):** save a named snapshot to the local library.
-- **打开 (Open):** open a saved local document.
-- **示例 / Examples:** load a generic variable-update, aliasing or loop demonstration.
-- **新练习 (New):** create an empty diagram.
-- **导入 JSON / 粘贴图表 (Import / Paste):** load editable diagram data.
-- **导出 JSON (Export JSON):** back up the complete editable document.
-- **导出 PNG (Export PNG):** export the currently visible diagram area.
+- **Save copy:** save a named snapshot to the local library.
+- **Open:** open a saved local document.
+- **Examples:** load a generic variable-update, aliasing or loop demonstration.
+- **New:** create an empty diagram.
+- **Import JSON / Paste diagram:** load editable diagram data.
+- **Export JSON:** back up the complete editable document.
+- **Export PNG:** export the currently visible diagram area.
 
-The adapter toolbar is primarily Chinese; the original diagram editor uses its existing labels. Both English and Chinese startup instructions are provided. JSON data authoring is documented in [SCHEMA.md](SCHEMA.md).
+**Interface language:** English is the default, including the offline toolbar, dialogs, help and status messages. The first visit opens a language chooser with English preselected. Choose English or Simplified Chinese; the **Language** button lets you change your choice without reloading or altering the current title, code, diagram, value histories or Java/Python setting. The original diagram editor retains its English labels. Existing exercise content, the Chinese practice collection and authoring guides are not translated by this setting.
+
+Your choice is saved in this browser for the current local address. A different browser or port, cleared site storage, or an invalid preference opens the chooser again. If browser storage is unavailable, the choice lasts for the current page session; disk saving remains available. JSON data authoring is documented in [SCHEMA.md](SCHEMA.md).
 
 For an agent authoring a Java trace, start with [AGENT-START.md (Chinese)](AGENT-START.md). It includes a ready-to-copy AI prompt and links to the [CSE116 trace authoring guide](CSE116-TRACE-GUIDE.md) and [JSON specification](SCHEMA.md). These public files do not depend on the local AGENTS.md. The detailed guide separates sourced course conventions from explicit tool defaults and documents complete native JSON, constructor links, recursion and verification. Its sources include Spring/Summer 2026 material; it is not a confirmed Fall exam rubric. Two original reference programs and importable JSON documents are in `examples/agent-*.trace.json`.
 
@@ -78,7 +81,7 @@ The root `VERSION` file is the release version source. Packaging uses it for the
 ```powershell
 .\runtime\node.exe scripts\examples.mjs
 .\runtime\node.exe scripts\practice\build.mjs
-.\runtime\node.exe --test tests\document.test.mjs tests\agent-examples.test.mjs tests\practice.test.mjs tests\privacy.test.mjs
+.\runtime\node.exe --test tests\document.test.mjs tests\agent-examples.test.mjs tests\practice.test.mjs tests\privacy.test.mjs tests\i18n.test.mjs
 .\runtime\node.exe --test tests\launcher.test.mjs
 .\runtime\node.exe scripts\validate.mjs
 .\runtime\node.exe scripts\audit.mjs

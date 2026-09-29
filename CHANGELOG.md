@@ -1,5 +1,17 @@
 # Changelog / 更新记录
 
+## v0.1.1 — 2026-09-28
+
+- English is now the default interface. Added a first-run language chooser and a persistent Language setting for English / Simplified Chinese.
+- Localized the offline toolbar, dialogs, help, status messages, accessibility labels and built-in example menu. Switching languages preserves the current document and Java/Python setting. Original diagram-editor labels remain English; authored exercise content is unchanged.
+- The toolbar wraps to keep actions reachable at smaller widths, and the browser tab title is English. Disk autosave continues if browser storage is unavailable.
+- Added preference, catalog and early-boot tests; updated both usage guides.
+
+- 默认使用英文界面；新增首次启动语言选择，以及可记住 English / 简体中文偏好的 Language / 语言入口。
+- 离线工具栏、弹窗、帮助、提示、无障碍标签与内置示例菜单支持双语。切换语言保留当前文档与 Java/Python 设置；原画图编辑器标签仍为英文，练习内容保持原样。
+- 工具栏在较窄窗口自动换行，页签标题改为英文；浏览器存储不可用时仍可自动保存到磁盘。
+- 增加语言偏好、文案完整性与启动恢复测试，同步更新中英文使用说明。
+
 ## v0.1 — 2026-09-28
 
 - Added the public AGENT-START.md entry, independent of local AGENTS.md, and documented the AI-to-local-import workflow in both READMEs.

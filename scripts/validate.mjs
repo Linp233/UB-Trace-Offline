@@ -9,7 +9,7 @@ const version=readVersion(root);
 const html=await fs.readFile(path.join(root,'dist/index.html'),'utf8');
 const refs=[...html.matchAll(/(?:src|href)="(\/[^"?#]+)"/g)].map(m=>m[1]);
 for(const ref of refs)await fs.access(path.join(root,'dist',ref));
-const files=['config.mjs','server.mjs','lib/document.mjs','lib/version.mjs','dist/offline.mjs','dist/boot.js','tools/import.mjs'];
+const files=['config.mjs','server.mjs','lib/document.mjs','lib/version.mjs','dist/offline.mjs','dist/i18n.mjs','dist/boot.js','tools/import.mjs'];
 for(const item of await fs.readdir(path.join(root,'scripts'),{recursive:true}))if(item.endsWith('.mjs'))files.push('scripts/'+item);
 for(const ref of refs.filter(ref=>ref.endsWith('.js')))files.push('dist'+ref);
 for(const file of files){const result=spawnSync(process.execPath,['--check',path.join(root,file)],{encoding:'utf8'});if(result.status!==0)throw new Error(file+'\n'+result.stderr);}
