@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-3 多态数组与增强 for — 练习",
+  "language": "java",
+  "code": "public class P0603 {\n    abstract static class Op { Op() {  } abstract int apply(int x); }\n    static class Add extends Op {\n        int step;\n        Add(int step) { super();   this.step = step;  }\n        int apply(int x) {   return x + step; }\n    }\n    static class Negate extends Op {\n        Negate() { super();  }\n        int apply(int x) {   return -x; }\n    }\n    public static void main(String[] args) throws Exception {\n        Op a = new Add(2);\n        Op b = new Negate();\n        Op[] steps = {a, b};\n        int total = 3;\n        for (Op op : steps) {\n            total = op.apply(total);\n        }\n        System.out.println(total);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 每次从数组取出的 op 是对象引用；库迭代细节省略。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-1 线性循环 — 练习",
+  "language": "java",
+  "code": "public class P1001 {\n    public static void main(String[] args) throws Exception {\n        int n = 4;\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            count++;\n        }\n        System.out.println(count);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 只统计 count++ 的执行次数。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

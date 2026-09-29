@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-4 根据前驱数组恢复路径 — 练习",
+  "language": "java",
+  "code": "public class P0904 {\n    public static void main(String[] args) throws Exception {\n        int[] previous = {-1, 0, 0, 1};\n        int current = 3;\n        java.util.ArrayList<Integer> reverse = new java.util.ArrayList<>();\n        while (current != -1) {\n            reverse.add(current);\n            current = previous[current];\n        }\n        System.out.println(reverse);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 给定 previous，无需运行 BFS；记录逆序恢复的列表。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

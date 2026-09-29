@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-3 DFS：已访问顶点的再次调用 — 练习",
+  "language": "java",
+  "code": "public class P0903 {\n    static void dfs(int[][] graph, boolean[] seen, int vertex) {\n        if (seen[vertex]) return;\n        seen[vertex] = true;\n        System.out.println(vertex);\n        for (int next : graph[vertex]) {\n            dfs(graph, seen, next);\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        int[][] graph = {{1, 2}, {2}, {}};\n        boolean[] seen = new boolean[3];\n        dfs(graph, seen, 0);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 同一图按固定邻居顺序递归；记录早返回的第二次 dfs(2)。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

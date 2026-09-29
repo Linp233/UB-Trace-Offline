@@ -1,0 +1,89 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-3 短路与分支作用域",
+  "language": "java",
+  "code": "public class P0103 {\n    public static void main(String[] args) throws Exception {\n        int x = 3;\n        boolean hit = x > 5 && ++x > 0;\n        if (!hit) {\n            int bonus = 4;\n            x += bonus;\n        } else {\n            x = 100;\n        }\n        System.out.println(x);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. && 的左侧为 false，++x 不执行；bonus 的块作用域已释放。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "x",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u0",
+                  "value": "3"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u1",
+                  "value": "7"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "hit",
+              "name": "hit",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "hit-u0",
+                  "value": "false"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "branch",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "bonus",
+                  "name": "bonus",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "bonus-u0",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "7"
+      }
+    ]
+  }
+}

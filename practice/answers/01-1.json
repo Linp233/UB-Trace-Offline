@@ -1,0 +1,92 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-1 整数除法与数值提升",
+  "language": "java",
+  "code": "public class P0101 {\n    public static void main(String[] args) throws Exception {\n        int x = 9;\n        int y = x / 2;\n        x += y;\n        double ratio = x / 2.0;\n        System.out.println(x);\n        System.out.println(y);\n        System.out.println(ratio);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 9 / 2 先得到整数 4；更新 x 后才计算 13 / 2.0。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "x",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u0",
+                  "value": "9"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u1",
+                  "value": "13"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "y",
+              "name": "y",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "y-u0",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ratio",
+              "name": "ratio",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ratio-u0",
+                  "value": "6.5"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "13"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "4"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-2",
+        "value": "6.5"
+      }
+    ]
+  }
+}

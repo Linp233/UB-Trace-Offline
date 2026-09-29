@@ -1,0 +1,245 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-1 接口引用更换实现",
+  "language": "java",
+  "code": "public class P0601 {\n    interface Op { int apply(int x); }\n    static class Add implements Op {\n        int step;\n        Add(int step) {   this.step = step;  }\n        public int apply(int x) {   return x + step; }\n    }\n    static class Twice implements Op {\n        Twice() {  }\n        public int apply(int x) {   return x * 2; }\n    }\n    public static void main(String[] args) throws Exception {\n        Op op = new Add(3);\n        int result = op.apply(4);\n        op = new Twice();\n        result = op.apply(result);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 第一次实际对象是 Add，第二次是 Twice；旧 Add 对象保留在累计图中。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "op",
+              "name": "op",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "op-u0",
+                  "value": "0x100"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "op-u1",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "result",
+              "name": "result",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u0",
+                  "value": "7"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u1",
+                  "value": "14"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "addctor",
+        "name": "Add",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "op",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "addctor-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "step",
+              "name": "step",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "step-u0",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "add",
+        "name": "Add.apply",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "result",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "add-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "at",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "at-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ax",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ax-u0",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "twicector",
+        "name": "Twice",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "op",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "twicector-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "dt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "dt-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "twice",
+        "name": "Twice.apply",
+        "totalStackFramesAtInsert": 4,
+        "returnsToVariableId": "result",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "twice-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "tt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tt-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "tx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tx-u0",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Add",
+        "constructorStackFrameId": "addctor",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "field",
+            "name": "step",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "field-u0",
+                "value": "3"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Twice",
+        "constructorStackFrameId": "twicector",
+        "variables": []
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "14"
+      }
+    ]
+  }
+}

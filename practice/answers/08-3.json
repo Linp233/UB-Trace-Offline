@@ -1,0 +1,665 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-3 递归计算节点数",
+  "language": "java",
+  "code": "public class P0803 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n    static int size(Node node) {\n        if (node == null) return 0;\n        int leftSize = size(node.left);\n        int rightSize = size(node.right);\n        return 1 + leftSize + rightSize;\n    }\n    public static void main(String[] args) throws Exception {\n        Node left = new Node(1, null, null);\n        Node right = new Node(3, null, null);\n        Node root = new Node(2, left, right);\n        int result = size(root);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 叶子节点各返回 1，根返回 3。帧按进入顺序列出，局部返回值则在递归展开后才赋值。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "left",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "left-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "right",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "right-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "root",
+              "name": "root",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "root-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "result",
+              "name": "result",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u0",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c0",
+        "name": "Node",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "left",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct0",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct0-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv0",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv0-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl0",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl0-u0",
+                  "value": "null"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr0",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr0-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Node",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "right",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct1-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv1",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv1-u0",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl1",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl1-u0",
+                  "value": "null"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr1",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr1-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Node",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "root",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct2",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct2-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv2",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv2-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl2",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl2-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr2",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr2-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s0",
+        "name": "size",
+        "totalStackFramesAtInsert": 4,
+        "returnsToVariableId": "result",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n0",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n0-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "l0",
+              "name": "leftSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "l0-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "r0",
+              "name": "rightSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "r0-u0",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s1",
+        "name": "size",
+        "totalStackFramesAtInsert": 5,
+        "returnsToVariableId": "l0",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n1",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n1-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "l1",
+              "name": "leftSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "l1-u0",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "r1",
+              "name": "rightSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "r1-u0",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s2",
+        "name": "size",
+        "totalStackFramesAtInsert": 6,
+        "returnsToVariableId": "l1",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n2",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n2-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s3",
+        "name": "size",
+        "totalStackFramesAtInsert": 7,
+        "returnsToVariableId": "r1",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s3-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n3",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n3-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s4",
+        "name": "size",
+        "totalStackFramesAtInsert": 8,
+        "returnsToVariableId": "r0",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s4-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n4",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n4-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "l4",
+              "name": "leftSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "l4-u0",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "r4",
+              "name": "rightSize",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "r4-u0",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s5",
+        "name": "size",
+        "totalStackFramesAtInsert": 9,
+        "returnsToVariableId": "l4",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s5-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n5",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n5-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s6",
+        "name": "size",
+        "totalStackFramesAtInsert": 10,
+        "returnsToVariableId": "r4",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s6-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n6",
+              "name": "node",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n6-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Node",
+        "constructorStackFrameId": "c0",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv0",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv0-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl0",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl0-u0",
+                "value": "null"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr0",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr0-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Node",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv1",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv1-u0",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl1",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl1-u0",
+                "value": "null"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr1",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr1-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "Node",
+        "constructorStackFrameId": "c2",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv2",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv2-u0",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl2",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl2-u0",
+                "value": "0x100"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr2",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr2-u0",
+                "value": "0x101"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "3"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-4 static 计数与实例编号 — 练习",
+  "language": "java",
+  "code": "public class P0304 {\n    static class Ticket {\n        static int made = 0;\n        int id;\n        Ticket() {\n            Ticket.made++;\n            this.id = Ticket.made;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n\n        Ticket a = new Ticket();\n        Ticket b = new Ticket();\n        System.out.println(a.id + \":\" + b.id + \":\" + Ticket.made);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 共享类存储只有一份；每个对象有独立的 id。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

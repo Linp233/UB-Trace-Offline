@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-5 共享测试对象造成状态污染 — 练习",
+  "language": "java",
+  "code": "public class P0705 {\n    static class Counter {\n        int value;\n        Counter() {  value = 0;  }\n        int next() {  value++;  return value; }\n    }\n    public static void main(String[] args) throws Exception {\n        Counter shared = new Counter();\n        int first = shared.next();\n        int second = shared.next();\n        boolean independent = first == 1 && second == 1;\n        Counter fresh = new Counter();\n        int retry = fresh.next();\n        boolean passed = retry == 1;\n        System.out.println(independent + \":\" + passed);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 比较复用对象与新建对象；完整保留每次 next 调用。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

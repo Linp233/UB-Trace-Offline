@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-4 字符串结果测试 — 练习",
+  "language": "java",
+  "code": "public class P0704 {\n    static String normalize(String name) {\n        String cleaned = name.trim();\n        String result = cleaned.toUpperCase(java.util.Locale.ROOT);\n        return result;\n    }\n    public static void main(String[] args) throws Exception {\n        String actual = normalize(\"  Ada \");\n        String expected = \"ADA\";\n        boolean passed = actual.equals(expected);\n        System.out.println(passed);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 用 equals 比较内容，Locale.ROOT 固定大小写转换规则。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

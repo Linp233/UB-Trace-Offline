@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-2 中序遍历包含 null 调用 — 练习",
+  "language": "java",
+  "code": "public class P0802 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n    static void visit(Node node) {\n        if (node == null) return;\n        visit(node.left);\n        System.out.println(node.value);\n        visit(node.right);\n    }\n    public static void main(String[] args) throws Exception {\n        Node left = new Node(1, null, null);\n        Node right = new Node(3, null, null);\n        Node root = new Node(2, left, right);\n        visit(root);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 每次 visit(null) 也是实际调用，不能省略其帧。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

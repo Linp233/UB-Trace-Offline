@@ -1,0 +1,239 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-2 向下转型不创建对象",
+  "language": "java",
+  "code": "public class P0602 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n        int kind() { return 1; }\n    }\n    static class Child extends Base {\n        Child(int x) { super(x);   }\n        @Override int kind() {  return value + 1; }\n        int extra() {  return value * 2; }\n    }\n    public static void main(String[] args) throws Exception {\n        Base a = new Child(4);\n        int x = a.kind();\n        Child b = (Child)a;\n        int y = b.extra();\n        System.out.println(x + \":\" + y);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 强制转型只改变表达式类型，不改变地址；Base.kind 没有执行，不为它建帧。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "x",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u0",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "y",
+              "name": "y",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "y-u0",
+                  "value": "8"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "child",
+        "name": "Child",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "a",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "child-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "cx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cx-u0",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "base",
+        "name": "Base",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "base-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "bt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "bt-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "bx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "bx-u0",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "kind",
+        "name": "Child.kind",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "x",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "kind-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "kt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "kt-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "extra",
+        "name": "Child.extra",
+        "totalStackFramesAtInsert": 4,
+        "returnsToVariableId": "y",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "extra-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "et",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "et-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Child",
+        "constructorStackFrameId": "child",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "field",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "field-u0",
+                "value": "4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "5:8"
+      }
+    ]
+  }
+}

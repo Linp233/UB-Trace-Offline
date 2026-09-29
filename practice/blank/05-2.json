@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "05-2 override 中调用 super 方法 — 练习",
+  "language": "java",
+  "code": "public class P0502 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n        int score() {  return value + 1; }\n    }\n    static class Child extends Base {\n        Child(int x) { super(x);   }\n        @Override int score() {\n            int parent = super.score();\n            return parent * 2;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Base b = new Child(3);\n        int result = b.score();\n        System.out.println(result);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 父方法结果先赋给子方法中的局部变量。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

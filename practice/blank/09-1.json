@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-1 邻接表中的容器引用 — 练习",
+  "language": "java",
+  "code": "public class P0901 {\n    public static void main(String[] args) throws Exception {\n        java.util.ArrayList<java.util.ArrayList<Integer>> graph = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> a = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> b = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> c = new java.util.ArrayList<>();\n        a.add(1);\n        a.add(2);\n        b.add(2);\n        graph.add(a);\n        graph.add(b);\n        graph.add(c);\n        int degree = graph.get(0).size();\n        int target = graph.get(0).get(1);\n        System.out.println(degree + \":\" + target);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 顶点按 0、1、2 编号；外层表存的是邻居表的引用。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-4 for 的最后一次增量 — 练习",
+  "language": "java",
+  "code": "public class P0104 {\n    public static void main(String[] args) throws Exception {\n        int sum = 0;\n        for (int i = 1; i <= 3; i++) {\n            int temp = i * 2;\n            sum += temp;\n        }\n        System.out.println(sum);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 保留 i、循环体 temp 和累计 sum 的完整历史。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

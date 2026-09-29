@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "05-5 通过父类引用调用继承方法 — 练习",
+  "language": "java",
+  "code": "public class P0505 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n        void add(int amount) {   value += amount;  }\n    }\n    static class Child extends Base {\n        Child(int x) { super(x);   }\n    }\n    public static void main(String[] args) throws Exception {\n        Child c = new Child(2);\n        Base b = c;\n        b.add(3);\n        c.add(1);\n        System.out.println(c.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 两个 add 调用有独立帧，修改同一继承字段。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

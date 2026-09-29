@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-1 整数除法与数值提升 — 练习",
+  "language": "java",
+  "code": "public class P0101 {\n    public static void main(String[] args) throws Exception {\n        int x = 9;\n        int y = x / 2;\n        x += y;\n        double ratio = x / 2.0;\n        System.out.println(x);\n        System.out.println(y);\n        System.out.println(ratio);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 记录每次赋值，区分整数除法与 double 运算。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

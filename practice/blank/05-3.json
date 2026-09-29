@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "05-3 this 与 super 的连续委托 — 练习",
+  "language": "java",
+  "code": "public class P0503 {\n    static class Base {\n        int value;\n        Base(int seed) {   value = seed;  }\n    }\n    static class Child extends Base {\n        Child() { this(5);  }\n        Child(int start) { super(start);   value++;  }\n    }\n    public static void main(String[] args) throws Exception {\n        Child c = new Child();\n        System.out.println(c.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 三个构造器帧，共享一个实例；只给最外层关联分配结果。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

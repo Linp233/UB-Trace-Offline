@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-3 HashMap 同键覆盖 — 练习",
+  "language": "java",
+  "code": "public class P0203 {\n    public static void main(String[] args) throws Exception {\n        java.util.HashMap<String, Integer> map = new java.util.HashMap<>();\n        map.put(\"red\", 2);\n        map.put(\"blue\", 5);\n        int old = map.put(\"red\", map.get(\"blue\") + 1);\n        System.out.println(map.get(\"red\") + \":\" + old);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 使用明确的键访问，不能假设 HashMap 的遍历顺序。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

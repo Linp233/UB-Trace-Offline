@@ -1,0 +1,213 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "05-1 super 初始化同一个对象",
+  "language": "java",
+  "code": "public class P0501 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n    }\n    static class Child extends Base {\n        int bonus;\n        Child(int x, int bonus) { super(x);    this.bonus = bonus;  }\n        int total() {  return value + bonus; }\n    }\n    public static void main(String[] args) throws Exception {\n        Child c = new Child(2, 4);\n        int result = c.total();\n        System.out.println(result);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 进入 Child 后进入 Base；两个构造器的 this 同址，堆类型为 Child。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "c",
+              "name": "c",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "c-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "result",
+              "name": "result",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u0",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "child",
+        "name": "Child",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "c",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "child-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "cx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cx-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "cb",
+              "name": "bonus",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cb-u0",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "base",
+        "name": "Base",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "base-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "bt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "bt-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "bx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "bx-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "total",
+        "name": "Child.total",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "result",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "total-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "tt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tt-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Child",
+        "constructorStackFrameId": "child",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "bonus",
+            "name": "bonus",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "bonus-u0",
+                "value": "4"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "value",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "value-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "6"
+      }
+    ]
+  }
+}

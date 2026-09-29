@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-2 BFS：入队时标记 — 练习",
+  "language": "java",
+  "code": "public class P0902 {\n    public static void main(String[] args) throws Exception {\n        int[][] graph = {{1, 2}, {2}, {}};\n        int[] queue = new int[3];\n        boolean[] seen = new boolean[3];\n        int head = 0;\n        int tail = 0;\n        queue[tail] = 0;\n        tail++;\n        seen[0] = true;\n        while (head < tail) {\n            int vertex = queue[head];\n            head++;\n            System.out.println(vertex);\n            for (int next : graph[vertex]) {\n                if (!seen[next]) {\n                    seen[next] = true;\n                    queue[tail] = next;\n                    tail++;\n                }\n            }\n        }\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 邻居顺序由数组固定；顶点 2 不应重复入队。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

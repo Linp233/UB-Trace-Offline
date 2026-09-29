@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-2 通过一个测试不代表实现正确 — 练习",
+  "language": "java",
+  "code": "public class P0702 {\n    static int square(int n) {  return n + n; }\n    public static void main(String[] args) throws Exception {\n        int expected = 9;\n        int actual = square(3);\n        boolean first = actual == expected;\n        int other = square(2);\n        boolean second = other == 4;\n        System.out.println(first);\n        System.out.println(second);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 代码故意含有逻辑缺陷；按原样 trace，不要修复它。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

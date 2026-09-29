@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-3 倍增循环 — 练习",
+  "language": "java",
+  "code": "public class P1003 {\n    public static void main(String[] args) throws Exception {\n        int n = 10;\n        int count = 0;\n        for (int step = 1; step < n; step *= 2) {\n            count++;\n        }\n        System.out.println(count);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 只统计 count++；保留使循环结束的 step=16。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

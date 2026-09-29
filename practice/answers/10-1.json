@@ -1,0 +1,124 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-1 线性循环",
+  "language": "java",
+  "code": "public class P1001 {\n    public static void main(String[] args) throws Exception {\n        int n = 4;\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            count++;\n        }\n        System.out.println(count);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. i=4 时条件失败，最后的增量仍在历史中。 指定操作 count++：本题 4 次；一般 n≥0 时 n 次，时间增长阶 Θ(n)。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n-u0",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "count",
+              "name": "count",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u0",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u1",
+                  "value": "1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u2",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u3",
+                  "value": "3"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u4",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "loop",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "i",
+                  "name": "i",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u0",
+                      "value": "0"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u1",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u2",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u3",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u4",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "4"
+      }
+    ]
+  }
+}

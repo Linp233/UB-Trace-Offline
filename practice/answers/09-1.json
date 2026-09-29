@@ -1,0 +1,221 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-1 邻接表中的容器引用",
+  "language": "java",
+  "code": "public class P0901 {\n    public static void main(String[] args) throws Exception {\n        java.util.ArrayList<java.util.ArrayList<Integer>> graph = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> a = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> b = new java.util.ArrayList<>();\n        java.util.ArrayList<Integer> c = new java.util.ArrayList<>();\n        a.add(1);\n        a.add(2);\n        b.add(2);\n        graph.add(a);\n        graph.add(b);\n        graph.add(c);\n        int degree = graph.get(0).size();\n        int target = graph.get(0).get(1);\n        System.out.println(degree + \":\" + target);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 图的边为 0→1、0→2、1→2；空邻居表 c 仍是一个真实对象。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "graph",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "graph-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "c",
+              "name": "c",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "c-u0",
+                  "value": "0x103"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "degree",
+              "name": "degree",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "degree-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "target",
+              "name": "target",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "target-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "ArrayList<ArrayList<Integer>>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "g0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "g0-u0",
+                "value": "0x101"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "g1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "g1-u0",
+                "value": "0x102"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "g2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "g2-u0",
+                "value": "0x103"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "ArrayList<Integer>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "a0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "a0-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "a1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "a1-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "ArrayList<Integer>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "b0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "b0-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x103",
+        "memoryAddress": "0x103",
+        "objectType": "ArrayList<Integer>",
+        "constructorStackFrameId": null,
+        "variables": []
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "2:2"
+      }
+    ]
+  }
+}

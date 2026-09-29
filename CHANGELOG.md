@@ -1,5 +1,19 @@
 # Changelog / 更新记录
 
+## Unreleased / 未发行
+
+- Added the public AGENT-START.md entry, independent of local AGENTS.md, and documented the AI-to-local-import workflow in both READMEs.
+- Added 50 original Summer 2026 exercises across 10 instructional units, separate question/answer booklets, blank and solved JSON, and Java source. Verified original output and every authored value history with 701 runtime observations; documented manual review of drawing conventions.
+- Included the public entry and practice collection in the portable package allowlist.
+- Added a source-linked CSE116 Java authoring guide, complete native JSON field documentation, and original inheritance/recursion reference documents. Course conventions and tool defaults are distinguished explicitly.
+- Added reference-document validation and included the guide in future portable packages. The application runtime and release version remain v0.1.
+
+- 新增有来源的 CSE116 Java 编写指引、完整原生 JSON 字段说明及原创继承/递归参考文档，明确区分课程约定和工具默认值。
+- 新增独立于本地 AGENTS.md 的公开入口 AGENT-START.md，并在中英文 README 说明 AI 生成与本地导入流程。
+- 新增按 Summer 2026 的 10 个授课单元组织的 50 道原创题，题目与答案分册，附空白/答案 JSON 和 Java 源码；实际核对输出及全部历史值，共 701 次运行时观测，并记录绘图约定的人工复核范围。
+- 将公开入口与题库加入便携包文件清单。
+- 增加参考文档校验，并将指引纳入后续便携包文件清单。应用运行逻辑及发行版本仍为 v0.1。
+
 ## v0.1
 
 Initial versioned release of the current Windows x64 portable application.

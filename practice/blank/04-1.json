@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "04-1 连接两个节点 — 练习",
+  "language": "java",
+  "code": "public class P0401 {\n    static class Node {\n        int value;\n        Node next;\n        Node(int value, Node next) {\n            this.value = value;\n            this.next = next;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Node tail = new Node(7, null);\n        Node head = new Node(3, tail);\n        int total = head.value + head.next.value;\n        System.out.println(total);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 从尾到头分配，地址顺序与链表顺序不同。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

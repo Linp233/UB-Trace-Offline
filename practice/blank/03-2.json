@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-2 两个对象与一个别名 — 练习",
+  "language": "java",
+  "code": "public class P0302 {\n    static class Box {\n        int value;\n        Box(int x) {\n            this.value = x;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Box a = new Box(4);\n        Box b = new Box(7);\n        Box alias = a;\n        alias.value = 9;\n        boolean same = a == alias;\n        System.out.println(a.value + \":\" + b.value + \":\" + same);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 同值或同类不等于同一个对象。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

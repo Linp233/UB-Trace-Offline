@@ -1,0 +1,237 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "04-2 在链首插入",
+  "language": "java",
+  "code": "public class P0402 {\n    static class Node {\n        int value;\n        Node next;\n        Node(int value, Node next) {\n            this.value = value;\n            this.next = next;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Node head = new Node(5, null);\n        Node old = head;\n        head = new Node(2, head);\n        System.out.println(head.next == old);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 第二次 new 的实参 head 仍是旧地址 0x100。两个分配结果箭头都指向 head 这一变量行。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "head",
+              "name": "head",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u0",
+                  "value": "0x100"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u1",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "old",
+              "name": "old",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "old-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c0",
+        "name": "Node",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "head",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t0",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t0-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv0",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv0-u0",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pn0",
+              "name": "next",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pn0-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Node",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "head",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t1-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv1",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv1-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pn1",
+              "name": "next",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pn1-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Node",
+        "constructorStackFrameId": "c0",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv0",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv0-u0",
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hn0",
+            "name": "next",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn0-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Node",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv1",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv1-u0",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hn1",
+            "name": "next",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn1-u0",
+                "value": "0x100"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "true"
+      }
+    ]
+  }
+}

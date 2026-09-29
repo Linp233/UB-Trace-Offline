@@ -1,0 +1,167 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-1 边界测试驱动",
+  "language": "java",
+  "code": "public class P0701 {\n    static int clip(int x) {\n        if (x < 0) return 0;\n        if (x > 10) return 10;\n        return x;\n    }\n    public static void main(String[] args) throws Exception {\n        int a = clip(-2);\n        int b = clip(6);\n        int c = clip(12);\n        boolean passed = a == 0 && b == 6 && c == 10;\n        System.out.println(passed);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 测试了下界外、区间内和上界外；三个调用帧的 x 相互独立。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "c",
+              "name": "c",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "c-u0",
+                  "value": "10"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "passed",
+              "name": "passed",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "passed-u0",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "clip",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "a",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "x1",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x1-u0",
+                  "value": "-2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "clip",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "b",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "x2",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x2-u0",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c3",
+        "name": "clip",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "c",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c3-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "x3",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x3-u0",
+                  "value": "12"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "true"
+      }
+    ]
+  }
+}

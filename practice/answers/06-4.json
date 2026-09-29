@@ -1,0 +1,285 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-4 按距离比较",
+  "language": "java",
+  "code": "public class P0604 {\n    static class Near implements java.util.Comparator<Integer> {\n        int pivot;\n        Near(int pivot) {   this.pivot = pivot;  }\n        public int compare(Integer a, Integer b) {\n            int da = Math.abs(a - pivot);\n            int db = Math.abs(b - pivot);\n            return Integer.compare(da, db);\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        java.util.Comparator<Integer> cmp = new Near(5);\n        int first = cmp.compare(2, 7);\n        int second = cmp.compare(6, 3);\n        System.out.println(first + \":\" + second);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 比较的是与 5 的距离，不是数本身；Integer.compare 的库内部帧省略。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "cmp",
+              "name": "cmp",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cmp-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "first",
+              "name": "first",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "first-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "second",
+              "name": "second",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "second-u0",
+                  "value": "-1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "ctor",
+        "name": "Near",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "cmp",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "ctor-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pivot",
+              "name": "pivot",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pivot-u0",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Near.compare",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "first",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t1-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "a1",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a1-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b1",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b1-u0",
+                  "value": "7"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "da1",
+              "name": "da",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "da1-u0",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "db1",
+              "name": "db",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "db1-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Near.compare",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "second",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t2",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t2-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "a2",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a2-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b2",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b2-u0",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "da2",
+              "name": "da",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "da2-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "db2",
+              "name": "db",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "db2-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Near",
+        "constructorStackFrameId": "ctor",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "field",
+            "name": "pivot",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "field-u0",
+                "value": "5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "1:-1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-1 数组引用与元素更新 — 练习",
+  "language": "java",
+  "code": "public class P0201 {\n    public static void main(String[] args) throws Exception {\n        int[] a = {2, 5};\n        int[] b = a;\n        b[0] += a[1];\n        System.out.println(a[0]);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 一个数组，两个别名；区分变量更新与元素更新。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

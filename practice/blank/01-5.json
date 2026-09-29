@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-5 while 与 break — 练习",
+  "language": "java",
+  "code": "public class P0105 {\n    public static void main(String[] args) throws Exception {\n        int n = 6;\n        int count = 0;\n        while (n > 0) {\n            n -= 2;\n            count++;\n            if (n == 2) break;\n        }\n        System.out.println(n + \":\" + count);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 不要在 break 后继续执行循环。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

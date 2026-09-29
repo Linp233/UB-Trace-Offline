@@ -1,0 +1,144 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-5 this 构造器委托",
+  "language": "java",
+  "code": "public class P0305 {\n    static class Box {\n        int value;\n        Box() { this(4);  }\n        Box(int x) {   this.value = x;  }\n    }\n    public static void main(String[] args) throws Exception {\n        Box b = new Box();\n        b.value++;\n        System.out.println(b.value);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 进入顺序是 Box() 再 Box(int)；Java 探针在 this(4) 返回后才能读取外层构造器的 this，不代表帧进入顺序反转。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c0",
+        "name": "Box()",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "b",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t0",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t0-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Box(int)",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t1-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "x",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "x-u0",
+                  "value": "4"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Box",
+        "constructorStackFrameId": "c0",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "value",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "value-u0",
+                "value": "4"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "value-u1",
+                "value": "5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "5"
+      }
+    ]
+  }
+}

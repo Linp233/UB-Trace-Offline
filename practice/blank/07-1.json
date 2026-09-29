@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-1 边界测试驱动 — 练习",
+  "language": "java",
+  "code": "public class P0701 {\n    static int clip(int x) {\n        if (x < 0) return 0;\n        if (x > 10) return 10;\n        return x;\n    }\n    public static void main(String[] args) throws Exception {\n        int a = clip(-2);\n        int b = clip(6);\n        int c = clip(12);\n        boolean passed = a == 0 && b == 6 && c == 10;\n        System.out.println(passed);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 追踪被测函数和三个测试输入；最后给出布尔测试结果。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

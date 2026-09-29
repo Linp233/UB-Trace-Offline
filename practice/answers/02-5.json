@@ -1,0 +1,147 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-5 读取固定 CSV 文件",
+  "language": "java",
+  "code": "public class P0205 {\n    public static void main(String[] args) throws Exception {\n        String text = java.nio.file.Files.readString(java.nio.file.Path.of(\"P0205.csv\")).trim();\n        String[] fields = text.split(\",\");\n        int quantity = Integer.parseInt(fields[1]);\n        int price = Integer.parseInt(fields[2]);\n        int total = quantity * price;\n        System.out.println(fields[0] + \":\" + total);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=P0205.csv; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 输入文件只有一行 pen,4,6。split 产生一个 String[]；字符串与 Integer 按课程简化直接表示。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "text",
+              "name": "text",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "text-u0",
+                  "value": "\"pen,4,6\""
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "fields",
+              "name": "fields",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "fields-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "q",
+              "name": "quantity",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "q-u0",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "p",
+              "name": "price",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "p-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "total",
+              "name": "total",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "total-u0",
+                  "value": "24"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "String[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "f0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "f0-u0",
+                "value": "\"pen\""
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "f1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "f1-u0",
+                "value": "\"4\""
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "f2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "f2-u0",
+                "value": "\"6\""
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "pen:24"
+      }
+    ]
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-1 树节点与共享引用",
+  "language": "java",
+  "code": "public class P0801 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n\n    public static void main(String[] args) throws Exception {\n        Node left = new Node(1, null, null);\n        Node right = new Node(3, null, null);\n        Node root = new Node(2, left, right);\n        Node alias = root.left;\n        alias.value += 4;\n        int total = root.value + root.left.value + root.right.value;\n        System.out.println(total);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. root.left 与 alias 同指 0x100；左子节点从 1 改为 5。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "left",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "left-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "right",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "right-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "root",
+              "name": "root",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "root-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "alias",
+              "name": "alias",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "alias-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "total",
+              "name": "total",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "total-u0",
+                  "value": "10"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c0",
+        "name": "Node",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "left",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct0",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct0-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv0",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv0-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl0",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl0-u0",
+                  "value": "null"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr0",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr0-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Node",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "right",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct1-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv1",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv1-u0",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl1",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl1-u0",
+                  "value": "null"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr1",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr1-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Node",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "root",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct2",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct2-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv2",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv2-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pl2",
+              "name": "left",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pl2-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pr2",
+              "name": "right",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pr2-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Node",
+        "constructorStackFrameId": "c0",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv0",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv0-u0",
+                "value": "1"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv0-u1",
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl0",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl0-u0",
+                "value": "null"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr0",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr0-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Node",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv1",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv1-u0",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl1",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl1-u0",
+                "value": "null"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr1",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr1-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "Node",
+        "constructorStackFrameId": "c2",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv2",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv2-u0",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hl2",
+            "name": "left",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hl2-u0",
+                "value": "0x100"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hr2",
+            "name": "right",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hr2-u0",
+                "value": "0x101"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "10"
+      }
+    ]
+  }
+}

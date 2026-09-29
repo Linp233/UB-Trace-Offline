@@ -1,0 +1,109 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-2 ArrayList 的 add 与 set",
+  "language": "java",
+  "code": "public class P0202 {\n    public static void main(String[] args) throws Exception {\n        java.util.ArrayList<Integer> list = new java.util.ArrayList<>();\n        list.add(3);\n        list.add(8);\n        int old = list.set(0, list.get(1) - 2);\n        System.out.println(list);\n        System.out.println(old);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. set 返回被替换的旧值 3；下标 0 的历史为 3 → 6。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "list",
+              "name": "list",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "list-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "old",
+              "name": "old",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "old-u0",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "ArrayList<Integer>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u0",
+                "value": "3"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u1",
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e1-u0",
+                "value": "8"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "[6, 8]"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "3"
+      }
+    ]
+  }
+}

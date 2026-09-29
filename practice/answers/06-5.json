@@ -1,0 +1,224 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-5 用比较器排序两个元素",
+  "language": "java",
+  "code": "public class P0605 {\n    static class Desc implements java.util.Comparator<Integer> {\n        Desc() {  }\n        public int compare(Integer a, Integer b) {    return b - a; }\n    }\n    public static void main(String[] args) throws Exception {\n        java.util.Comparator<Integer> cmp = new Desc();\n        int[] data = {2, 7};\n        int order = cmp.compare(data[0], data[1]);\n        if (order > 0) {\n            int temp = data[0];\n            data[0] = data[1];\n            data[1] = temp;\n        }\n        System.out.println(java.util.Arrays.toString(data));\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. compare(2,7)=5，触发交换；temp 只在 if 块内，数组引用 data 未变化。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "cmp",
+              "name": "cmp",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cmp-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "data",
+              "name": "data",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "data-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "order",
+              "name": "order",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "order-u0",
+                  "value": "5"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "swap",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "temp",
+                  "name": "temp",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "temp-u0",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "ctor",
+        "name": "Desc",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "cmp",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "ctor-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ct",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ct-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "compare",
+        "name": "Desc.compare",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "order",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "compare-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "mt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "mt-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pa",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pa-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pb",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pb-u0",
+                  "value": "7"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Desc",
+        "constructorStackFrameId": "ctor",
+        "variables": []
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u0",
+                "value": "2"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u1",
+                "value": "7"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e1-u0",
+                "value": "7"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e1-u1",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "[7, 2]"
+      }
+    ]
+  }
+}

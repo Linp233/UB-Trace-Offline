@@ -1,0 +1,168 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-1 构造与实例方法",
+  "language": "java",
+  "code": "public class P0301 {\n    static class Box {\n        int value;\n        Box(int x) {   this.value = x;  }\n        int add(int delta) {\n            this.value += delta;\n            return this.value;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Box b = new Box(3);\n        int result = b.add(2);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 构造器和 add 的 this 都是 0x100；修改的是堆字段。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "result",
+              "name": "result",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u0",
+                  "value": "5"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "ctor",
+        "name": "Box",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "b",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "ctor-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "ctort",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ctort-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ctorx",
+              "name": "x",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ctorx-u0",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "add",
+        "name": "Box.add",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "result",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "add-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "mt",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "mt-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "delta",
+              "name": "delta",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "delta-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Box",
+        "constructorStackFrameId": "ctor",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "field",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "field-u0",
+                "value": "3"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "field-u1",
+                "value": "5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "5"
+      }
+    ]
+  }
+}

@@ -1,0 +1,519 @@
+{
+  "format": "cse116-original-practice/v1",
+  "chapters": [
+    {
+      "id": "01",
+      "title": "Java 基础：表达式、方法与控制流",
+      "lecture": 1,
+      "source": "https://cse116.com/static_files/slides/week1_1_Java.pdf"
+    },
+    {
+      "id": "02",
+      "title": "Java 集合、文件与 CSV",
+      "lecture": 2,
+      "source": "https://cse116.com/static_files/slides/week2_1_Java.pdf"
+    },
+    {
+      "id": "03",
+      "title": "类与对象",
+      "lecture": 3,
+      "source": "https://cse116.com/static_files/slides/week3_1_Classes.pdf"
+    },
+    {
+      "id": "04",
+      "title": "链表、栈与队列",
+      "lecture": 4,
+      "source": "https://cse116.com/static_files/slides/Week4_1_Linked_List.pdf"
+    },
+    {
+      "id": "05",
+      "title": "继承",
+      "lecture": 5,
+      "source": "https://cse116.com/static_files/slides/Week6_1_Inheritance.pdf"
+    },
+    {
+      "id": "06",
+      "title": "多态与比较器",
+      "lecture": 6,
+      "source": "https://cse116.com/static_files/slides/Week9_1_Polymorphism.pdf"
+    },
+    {
+      "id": "07",
+      "title": "测试",
+      "lecture": 7,
+      "source": "https://cse116.com/static_files/slides/week2_1_Unit_Testing.pdf"
+    },
+    {
+      "id": "08",
+      "title": "树与二叉搜索树",
+      "lecture": 8,
+      "source": "https://cse116.com/static_files/slides/Week7_1_Trees.pdf"
+    },
+    {
+      "id": "09",
+      "title": "图与路径",
+      "lecture": 10,
+      "source": "https://cse116.com/static_files/slides/Week10_1_Graphs.pdf"
+    },
+    {
+      "id": "10",
+      "title": "运行时间与操作计数",
+      "lecture": 11,
+      "source": "https://cse116.com/"
+    }
+  ],
+  "problems": [
+    {
+      "id": "01-1",
+      "chapter": "01",
+      "title": "整数除法与数值提升",
+      "source": "sources/P0101.java",
+      "blank": "blank/01-1.json",
+      "answer": "answers/01-1.json",
+      "files": []
+    },
+    {
+      "id": "01-2",
+      "chapter": "01",
+      "title": "同一方法的两次调用",
+      "source": "sources/P0102.java",
+      "blank": "blank/01-2.json",
+      "answer": "answers/01-2.json",
+      "files": []
+    },
+    {
+      "id": "01-3",
+      "chapter": "01",
+      "title": "短路与分支作用域",
+      "source": "sources/P0103.java",
+      "blank": "blank/01-3.json",
+      "answer": "answers/01-3.json",
+      "files": []
+    },
+    {
+      "id": "01-4",
+      "chapter": "01",
+      "title": "for 的最后一次增量",
+      "source": "sources/P0104.java",
+      "blank": "blank/01-4.json",
+      "answer": "answers/01-4.json",
+      "files": []
+    },
+    {
+      "id": "01-5",
+      "chapter": "01",
+      "title": "while 与 break",
+      "source": "sources/P0105.java",
+      "blank": "blank/01-5.json",
+      "answer": "answers/01-5.json",
+      "files": []
+    },
+    {
+      "id": "02-1",
+      "chapter": "02",
+      "title": "数组引用与元素更新",
+      "source": "sources/P0201.java",
+      "blank": "blank/02-1.json",
+      "answer": "answers/02-1.json",
+      "files": []
+    },
+    {
+      "id": "02-2",
+      "chapter": "02",
+      "title": "ArrayList 的 add 与 set",
+      "source": "sources/P0202.java",
+      "blank": "blank/02-2.json",
+      "answer": "answers/02-2.json",
+      "files": []
+    },
+    {
+      "id": "02-3",
+      "chapter": "02",
+      "title": "HashMap 同键覆盖",
+      "source": "sources/P0203.java",
+      "blank": "blank/02-3.json",
+      "answer": "answers/02-3.json",
+      "files": []
+    },
+    {
+      "id": "02-4",
+      "chapter": "02",
+      "title": "参数重新绑定与原数组修改",
+      "source": "sources/P0204.java",
+      "blank": "blank/02-4.json",
+      "answer": "answers/02-4.json",
+      "files": []
+    },
+    {
+      "id": "02-5",
+      "chapter": "02",
+      "title": "读取固定 CSV 文件",
+      "source": "sources/P0205.java",
+      "blank": "blank/02-5.json",
+      "answer": "answers/02-5.json",
+      "files": [
+        "P0205.csv"
+      ]
+    },
+    {
+      "id": "03-1",
+      "chapter": "03",
+      "title": "构造与实例方法",
+      "source": "sources/P0301.java",
+      "blank": "blank/03-1.json",
+      "answer": "answers/03-1.json",
+      "files": []
+    },
+    {
+      "id": "03-2",
+      "chapter": "03",
+      "title": "两个对象与一个别名",
+      "source": "sources/P0302.java",
+      "blank": "blank/03-2.json",
+      "answer": "answers/03-2.json",
+      "files": []
+    },
+    {
+      "id": "03-3",
+      "chapter": "03",
+      "title": "对象参数的修改与重新绑定",
+      "source": "sources/P0303.java",
+      "blank": "blank/03-3.json",
+      "answer": "answers/03-3.json",
+      "files": []
+    },
+    {
+      "id": "03-4",
+      "chapter": "03",
+      "title": "static 计数与实例编号",
+      "source": "sources/P0304.java",
+      "blank": "blank/03-4.json",
+      "answer": "answers/03-4.json",
+      "files": []
+    },
+    {
+      "id": "03-5",
+      "chapter": "03",
+      "title": "this 构造器委托",
+      "source": "sources/P0305.java",
+      "blank": "blank/03-5.json",
+      "answer": "answers/03-5.json",
+      "files": []
+    },
+    {
+      "id": "04-1",
+      "chapter": "04",
+      "title": "连接两个节点",
+      "source": "sources/P0401.java",
+      "blank": "blank/04-1.json",
+      "answer": "answers/04-1.json",
+      "files": []
+    },
+    {
+      "id": "04-2",
+      "chapter": "04",
+      "title": "在链首插入",
+      "source": "sources/P0402.java",
+      "blank": "blank/04-2.json",
+      "answer": "answers/04-2.json",
+      "files": []
+    },
+    {
+      "id": "04-3",
+      "chapter": "04",
+      "title": "绕过中间节点",
+      "source": "sources/P0403.java",
+      "blank": "blank/04-3.json",
+      "answer": "answers/04-3.json",
+      "files": []
+    },
+    {
+      "id": "04-4",
+      "chapter": "04",
+      "title": "链表实现栈的 push 和 pop",
+      "source": "sources/P0404.java",
+      "blank": "blank/04-4.json",
+      "answer": "answers/04-4.json",
+      "files": []
+    },
+    {
+      "id": "04-5",
+      "chapter": "04",
+      "title": "队列的首尾引用",
+      "source": "sources/P0405.java",
+      "blank": "blank/04-5.json",
+      "answer": "answers/04-5.json",
+      "files": []
+    },
+    {
+      "id": "05-1",
+      "chapter": "05",
+      "title": "super 初始化同一个对象",
+      "source": "sources/P0501.java",
+      "blank": "blank/05-1.json",
+      "answer": "answers/05-1.json",
+      "files": []
+    },
+    {
+      "id": "05-2",
+      "chapter": "05",
+      "title": "override 中调用 super 方法",
+      "source": "sources/P0502.java",
+      "blank": "blank/05-2.json",
+      "answer": "answers/05-2.json",
+      "files": []
+    },
+    {
+      "id": "05-3",
+      "chapter": "05",
+      "title": "this 与 super 的连续委托",
+      "source": "sources/P0503.java",
+      "blank": "blank/05-3.json",
+      "answer": "answers/05-3.json",
+      "files": []
+    },
+    {
+      "id": "05-4",
+      "chapter": "05",
+      "title": "同名字段隐藏",
+      "source": "sources/P0504.java",
+      "blank": "blank/05-4.json",
+      "answer": "answers/05-4.json",
+      "files": []
+    },
+    {
+      "id": "05-5",
+      "chapter": "05",
+      "title": "通过父类引用调用继承方法",
+      "source": "sources/P0505.java",
+      "blank": "blank/05-5.json",
+      "answer": "answers/05-5.json",
+      "files": []
+    },
+    {
+      "id": "06-1",
+      "chapter": "06",
+      "title": "接口引用更换实现",
+      "source": "sources/P0601.java",
+      "blank": "blank/06-1.json",
+      "answer": "answers/06-1.json",
+      "files": []
+    },
+    {
+      "id": "06-2",
+      "chapter": "06",
+      "title": "向下转型不创建对象",
+      "source": "sources/P0602.java",
+      "blank": "blank/06-2.json",
+      "answer": "answers/06-2.json",
+      "files": []
+    },
+    {
+      "id": "06-3",
+      "chapter": "06",
+      "title": "多态数组与增强 for",
+      "source": "sources/P0603.java",
+      "blank": "blank/06-3.json",
+      "answer": "answers/06-3.json",
+      "files": []
+    },
+    {
+      "id": "06-4",
+      "chapter": "06",
+      "title": "按距离比较",
+      "source": "sources/P0604.java",
+      "blank": "blank/06-4.json",
+      "answer": "answers/06-4.json",
+      "files": []
+    },
+    {
+      "id": "06-5",
+      "chapter": "06",
+      "title": "用比较器排序两个元素",
+      "source": "sources/P0605.java",
+      "blank": "blank/06-5.json",
+      "answer": "answers/06-5.json",
+      "files": []
+    },
+    {
+      "id": "07-1",
+      "chapter": "07",
+      "title": "边界测试驱动",
+      "source": "sources/P0701.java",
+      "blank": "blank/07-1.json",
+      "answer": "answers/07-1.json",
+      "files": []
+    },
+    {
+      "id": "07-2",
+      "chapter": "07",
+      "title": "通过一个测试不代表实现正确",
+      "source": "sources/P0702.java",
+      "blank": "blank/07-2.json",
+      "answer": "answers/07-2.json",
+      "files": []
+    },
+    {
+      "id": "07-3",
+      "chapter": "07",
+      "title": "double 容差测试",
+      "source": "sources/P0703.java",
+      "blank": "blank/07-3.json",
+      "answer": "answers/07-3.json",
+      "files": []
+    },
+    {
+      "id": "07-4",
+      "chapter": "07",
+      "title": "字符串结果测试",
+      "source": "sources/P0704.java",
+      "blank": "blank/07-4.json",
+      "answer": "answers/07-4.json",
+      "files": []
+    },
+    {
+      "id": "07-5",
+      "chapter": "07",
+      "title": "共享测试对象造成状态污染",
+      "source": "sources/P0705.java",
+      "blank": "blank/07-5.json",
+      "answer": "answers/07-5.json",
+      "files": []
+    },
+    {
+      "id": "08-1",
+      "chapter": "08",
+      "title": "树节点与共享引用",
+      "source": "sources/P0801.java",
+      "blank": "blank/08-1.json",
+      "answer": "answers/08-1.json",
+      "files": []
+    },
+    {
+      "id": "08-2",
+      "chapter": "08",
+      "title": "中序遍历包含 null 调用",
+      "source": "sources/P0802.java",
+      "blank": "blank/08-2.json",
+      "answer": "answers/08-2.json",
+      "files": []
+    },
+    {
+      "id": "08-3",
+      "chapter": "08",
+      "title": "递归计算节点数",
+      "source": "sources/P0803.java",
+      "blank": "blank/08-3.json",
+      "answer": "answers/08-3.json",
+      "files": []
+    },
+    {
+      "id": "08-4",
+      "chapter": "08",
+      "title": "迭代 BST 查找",
+      "source": "sources/P0804.java",
+      "blank": "blank/08-4.json",
+      "answer": "answers/08-4.json",
+      "files": []
+    },
+    {
+      "id": "08-5",
+      "chapter": "08",
+      "title": "递归 BST 插入",
+      "source": "sources/P0805.java",
+      "blank": "blank/08-5.json",
+      "answer": "answers/08-5.json",
+      "files": []
+    },
+    {
+      "id": "09-1",
+      "chapter": "09",
+      "title": "邻接表中的容器引用",
+      "source": "sources/P0901.java",
+      "blank": "blank/09-1.json",
+      "answer": "answers/09-1.json",
+      "files": []
+    },
+    {
+      "id": "09-2",
+      "chapter": "09",
+      "title": "BFS：入队时标记",
+      "source": "sources/P0902.java",
+      "blank": "blank/09-2.json",
+      "answer": "answers/09-2.json",
+      "files": []
+    },
+    {
+      "id": "09-3",
+      "chapter": "09",
+      "title": "DFS：已访问顶点的再次调用",
+      "source": "sources/P0903.java",
+      "blank": "blank/09-3.json",
+      "answer": "answers/09-3.json",
+      "files": []
+    },
+    {
+      "id": "09-4",
+      "chapter": "09",
+      "title": "根据前驱数组恢复路径",
+      "source": "sources/P0904.java",
+      "blank": "blank/09-4.json",
+      "answer": "answers/09-4.json",
+      "files": []
+    },
+    {
+      "id": "09-5",
+      "chapter": "09",
+      "title": "邻接矩阵的出度与边数",
+      "source": "sources/P0905.java",
+      "blank": "blank/09-5.json",
+      "answer": "answers/09-5.json",
+      "files": []
+    },
+    {
+      "id": "10-1",
+      "chapter": "10",
+      "title": "线性循环",
+      "source": "sources/P1001.java",
+      "blank": "blank/10-1.json",
+      "answer": "answers/10-1.json",
+      "files": []
+    },
+    {
+      "id": "10-2",
+      "chapter": "10",
+      "title": "三角形嵌套循环",
+      "source": "sources/P1002.java",
+      "blank": "blank/10-2.json",
+      "answer": "answers/10-2.json",
+      "files": []
+    },
+    {
+      "id": "10-3",
+      "chapter": "10",
+      "title": "倍增循环",
+      "source": "sources/P1003.java",
+      "blank": "blank/10-3.json",
+      "answer": "answers/10-3.json",
+      "files": []
+    },
+    {
+      "id": "10-4",
+      "chapter": "10",
+      "title": "顺序循环相加",
+      "source": "sources/P1004.java",
+      "blank": "blank/10-4.json",
+      "answer": "answers/10-4.json",
+      "files": []
+    },
+    {
+      "id": "10-5",
+      "chapter": "10",
+      "title": "提前结束的线性查找",
+      "source": "sources/P1005.java",
+      "blank": "blank/10-5.json",
+      "answer": "answers/10-5.json",
+      "files": []
+    }
+  ]
+}

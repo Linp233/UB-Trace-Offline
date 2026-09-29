@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-5 邻接矩阵的出度与边数 — 练习",
+  "language": "java",
+  "code": "public class P0905 {\n    public static void main(String[] args) throws Exception {\n        int[][] graph = {{0,1,1}, {0,0,1}, {1,0,0}};\n        int edges = 0;\n        for (int row = 0; row < graph.length; row++) {\n            int degree = 0;\n            for (int col = 0; col < graph[row].length; col++) {\n                degree += graph[row][col];\n            }\n            edges += degree;\n            System.out.println(degree);\n        }\n        System.out.println(edges);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 有向图按每行统计出边；保留嵌套循环的全部历史。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

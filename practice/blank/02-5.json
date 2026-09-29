@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-5 读取固定 CSV 文件 — 练习",
+  "language": "java",
+  "code": "public class P0205 {\n    public static void main(String[] args) throws Exception {\n        String text = java.nio.file.Files.readString(java.nio.file.Path.of(\"P0205.csv\")).trim();\n        String[] fields = text.split(\",\");\n        int quantity = Integer.parseInt(fields[1]);\n        int price = Integer.parseInt(fields[2]);\n        int total = quantity * price;\n        System.out.println(fields[0] + \":\" + total);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 输入文件随题目提供；记录字符串数组与解析结果。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

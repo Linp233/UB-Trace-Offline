@@ -1,0 +1,124 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-4 for 的最后一次增量",
+  "language": "java",
+  "code": "public class P0104 {\n    public static void main(String[] args) throws Exception {\n        int sum = 0;\n        for (int i = 1; i <= 3; i++) {\n            int temp = i * 2;\n            sum += temp;\n        }\n        System.out.println(sum);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 最后一次 i++ 使 i 变成 4；条件失败后退出，temp 按同一声明位置合并历史。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "sum",
+              "name": "sum",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "sum-u0",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "sum-u1",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "sum-u2",
+                  "value": "6"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "sum-u3",
+                  "value": "12"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "loop",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "i",
+                  "name": "i",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u0",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u1",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u2",
+                      "value": "3"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u3",
+                      "value": "4"
+                    }
+                  ]
+                },
+                {
+                  "kind": "variable",
+                  "variableId": "temp",
+                  "name": "temp",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "temp-u0",
+                      "value": "2"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "temp-u1",
+                      "value": "4"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "temp-u2",
+                      "value": "6"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "12"
+      }
+    ]
+  }
+}

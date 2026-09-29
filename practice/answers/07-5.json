@@ -1,0 +1,313 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-5 共享测试对象造成状态污染",
+  "language": "java",
+  "code": "public class P0705 {\n    static class Counter {\n        int value;\n        Counter() {  value = 0;  }\n        int next() {  value++;  return value; }\n    }\n    public static void main(String[] args) throws Exception {\n        Counter shared = new Counter();\n        int first = shared.next();\n        int second = shared.next();\n        boolean independent = first == 1 && second == 1;\n        Counter fresh = new Counter();\n        int retry = fresh.next();\n        boolean passed = retry == 1;\n        System.out.println(independent + \":\" + passed);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. shared 的第二次 next 返回 2；新对象的状态重新从 0 开始。测试驱动只报告结果，不故意抛异常。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "shared",
+              "name": "shared",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "shared-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "first",
+              "name": "first",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "first-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "second",
+              "name": "second",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "second-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "independent",
+              "name": "independent",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "independent-u0",
+                  "value": "false"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "fresh",
+              "name": "fresh",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "fresh-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "retry",
+              "name": "retry",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "retry-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "passed",
+              "name": "passed",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "passed-u0",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Counter",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "shared",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "c1t",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "c1t-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "n1",
+        "name": "Counter.next",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "first",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "n1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n1t",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n1t-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "n2",
+        "name": "Counter.next",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "second",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "n2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n2t",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n2t-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Counter",
+        "totalStackFramesAtInsert": 4,
+        "returnsToVariableId": "fresh",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "c2t",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "c2t-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "n3",
+        "name": "Counter.next",
+        "totalStackFramesAtInsert": 5,
+        "returnsToVariableId": "retry",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "n3-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n3t",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n3t-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Counter",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "s1",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u1",
+                "value": "1"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u2",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Counter",
+        "constructorStackFrameId": "c2",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "s2",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u1",
+                "value": "1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "false:true"
+      }
+    ]
+  }
+}

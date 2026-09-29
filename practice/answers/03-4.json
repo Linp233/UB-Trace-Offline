@@ -1,0 +1,191 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-4 static 计数与实例编号",
+  "language": "java",
+  "code": "public class P0304 {\n    static class Ticket {\n        static int made = 0;\n        int id;\n        Ticket() {\n            Ticket.made++;\n            this.id = Ticket.made;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n\n        Ticket a = new Ticket();\n        Ticket b = new Ticket();\n        System.out.println(a.id + \":\" + b.id + \":\" + Ticket.made);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. static:Ticket 是工具的共享类存储标签，不是第三个 new 实例。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Ticket",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "a",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t1-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Ticket",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "b",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t2",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t2-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-static:Ticket",
+        "memoryAddress": "static:Ticket",
+        "objectType": "Ticket (static storage)",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "made",
+            "name": "Ticket.made",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "made-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "made-u1",
+                "value": "1"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "made-u2",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Ticket",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "id1",
+            "name": "id",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "id1-u0",
+                "value": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Ticket",
+        "constructorStackFrameId": "c2",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "id2",
+            "name": "id",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "id2-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "1:2:2"
+      }
+    ]
+  }
+}

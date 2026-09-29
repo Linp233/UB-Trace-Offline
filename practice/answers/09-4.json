@@ -1,0 +1,195 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-4 根据前驱数组恢复路径",
+  "language": "java",
+  "code": "public class P0904 {\n    public static void main(String[] args) throws Exception {\n        int[] previous = {-1, 0, 0, 1};\n        int current = 3;\n        java.util.ArrayList<Integer> reverse = new java.util.ArrayList<>();\n        while (current != -1) {\n            reverse.add(current);\n            current = previous[current];\n        }\n        System.out.println(reverse);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 前驱链为 3→1→0→-1，源码没有反转列表，因此打印终点到起点的顺序。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "previous",
+              "name": "previous",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "previous-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "current",
+              "name": "current",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "current-u0",
+                  "value": "3"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "current-u1",
+                  "value": "1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "current-u2",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "current-u3",
+                  "value": "-1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "reverse",
+              "name": "reverse",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "reverse-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "p0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "p0-u0",
+                "value": "-1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "p1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "p1-u0",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "p2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "p2-u0",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "p3",
+            "name": "3",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "p3-u0",
+                "value": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "ArrayList<Integer>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u0",
+                "value": "3"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e1-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e2-u0",
+                "value": "0"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "[3, 1, 0]"
+      }
+    ]
+  }
+}

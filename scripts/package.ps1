@@ -18,9 +18,9 @@ $utf8 = New-Object System.Text.UTF8Encoding($false)
 New-Item -ItemType Directory -Path $packageRoot -Force | Out-Null
 New-Item -ItemType Directory -Path $releases -Force | Out-Null
 try {
-    $files = @('VERSION','CHANGELOG.md','README.md','README.zh-CN.md','SCHEMA.md','LICENSE','THIRD-PARTY.md','LICENSE-STATUS.md','Start-Tracing.cmd','Start-Tracing.ps1','Stop-Tracing.cmd','Stop-Tracing.ps1','config.json','config.mjs','server.mjs')
+    $files = @('VERSION','CHANGELOG.md','README.md','README.zh-CN.md','AGENT-START.md','SCHEMA.md','CSE116-TRACE-GUIDE.md','LICENSE','THIRD-PARTY.md','LICENSE-STATUS.md','Start-Tracing.cmd','Start-Tracing.ps1','Stop-Tracing.cmd','Stop-Tracing.ps1','config.json','config.mjs','server.mjs')
     foreach ($name in $files) { Copy-Item -LiteralPath (Join-Path $projectRoot $name) -Destination (Join-Path $packageRoot $name) }
-    foreach ($name in @('dist','lib','tools','examples','licenses')) { Copy-Item -LiteralPath (Join-Path $projectRoot $name) -Destination $packageRoot -Recurse }
+    foreach ($name in @('dist','lib','tools','examples','practice','licenses')) { Copy-Item -LiteralPath (Join-Path $projectRoot $name) -Destination $packageRoot -Recurse }
     $runtime = Join-Path $packageRoot 'runtime'
     New-Item -ItemType Directory -Path $runtime | Out-Null
     foreach ($name in @('node.exe','LICENSE','PROVENANCE.json')) { Copy-Item -LiteralPath (Join-Path $projectRoot ('runtime/' + $name)) -Destination $runtime }

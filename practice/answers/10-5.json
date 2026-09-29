@@ -1,0 +1,196 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-5 提前结束的线性查找",
+  "language": "java",
+  "code": "public class P1005 {\n    public static void main(String[] args) throws Exception {\n        int[] data = {5, 8, 2, 9};\n        int target = 2;\n        int count = 0;\n        int found = -1;\n        for (int i = 0; i < data.length; i++) {\n            count++;\n            if (data[i] == target) {\n                found = i;\n                break;\n            }\n        }\n        System.out.println(count + \":\" + found);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 检查下标 0、1、2 后找到目标，i 的最终值是 2。 指定操作 count++：本题 3 次；长度 n≥1 的数组最好 1 次，最坏 n 次。最好 Θ(1)，最坏 Θ(n)。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "data",
+              "name": "data",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "data-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "target",
+              "name": "target",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "target-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "count",
+              "name": "count",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u0",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u1",
+                  "value": "1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u2",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "count-u3",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "found",
+              "name": "found",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "found-u0",
+                  "value": "-1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "found-u1",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "loop",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "i",
+                  "name": "i",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u0",
+                      "value": "0"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u1",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "i-u2",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e0-u0",
+                "value": "5"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e1-u0",
+                "value": "8"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e2-u0",
+                "value": "2"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e3",
+            "name": "3",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e3-u0",
+                "value": "9"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "3:2"
+      }
+    ]
+  }
+}

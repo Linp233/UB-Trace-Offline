@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-2 向下转型不创建对象 — 练习",
+  "language": "java",
+  "code": "public class P0602 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n        int kind() { return 1; }\n    }\n    static class Child extends Base {\n        Child(int x) { super(x);   }\n        @Override int kind() {  return value + 1; }\n        int extra() {  return value * 2; }\n    }\n    public static void main(String[] args) throws Exception {\n        Base a = new Child(4);\n        int x = a.kind();\n        Child b = (Child)a;\n        int y = b.extra();\n        System.out.println(x + \":\" + y);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 比较引用类型、实际对象类型与方法选择。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

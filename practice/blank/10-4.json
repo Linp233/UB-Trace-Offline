@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-4 顺序循环相加 — 练习",
+  "language": "java",
+  "code": "public class P1004 {\n    public static void main(String[] args) throws Exception {\n        int n = 3;\n        int count = 0;\n        for (int i = 0; i < n; i++) {\n            count++;\n        }\n        for (int j = 0; j < n; j++) {\n            count++;\n        }\n        System.out.println(count);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 两个循环顺序执行，统计两处 count++ 的合计次数。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

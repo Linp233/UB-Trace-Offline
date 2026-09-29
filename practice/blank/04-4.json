@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "04-4 链表实现栈的 push 和 pop — 练习",
+  "language": "java",
+  "code": "public class P0404 {\n    static class Node {\n        int value;\n        Node next;\n        Node(int value, Node next) {\n            this.value = value;\n            this.next = next;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Node top = null;\n        top = new Node(10, top);\n        top = new Node(20, top);\n        int popped = top.value;\n        top = top.next;\n        System.out.println(popped + \":\" + top.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 保留 top 的 null 初值及两次 push 和一次 pop。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "04-3 绕过中间节点 — 练习",
+  "language": "java",
+  "code": "public class P0403 {\n    static class Node {\n        int value;\n        Node next;\n        Node(int value, Node next) {\n            this.value = value;\n            this.next = next;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Node tail = new Node(9, null);\n        Node middle = new Node(6, tail);\n        Node head = new Node(1, middle);\n        head.next = middle.next;\n        System.out.println(head.next.value + \":\" + middle.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 字段更新不等于销毁被绕过的对象。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

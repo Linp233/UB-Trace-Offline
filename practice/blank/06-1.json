@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-1 接口引用更换实现 — 练习",
+  "language": "java",
+  "code": "public class P0601 {\n    interface Op { int apply(int x); }\n    static class Add implements Op {\n        int step;\n        Add(int step) {   this.step = step;  }\n        public int apply(int x) {   return x + step; }\n    }\n    static class Twice implements Op {\n        Twice() {  }\n        public int apply(int x) {   return x * 2; }\n    }\n    public static void main(String[] args) throws Exception {\n        Op op = new Add(3);\n        int result = op.apply(4);\n        op = new Twice();\n        result = op.apply(result);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 引用变量改变对象后，后续调用选择不同实现。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

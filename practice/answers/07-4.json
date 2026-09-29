@@ -1,0 +1,127 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-4 字符串结果测试",
+  "language": "java",
+  "code": "public class P0704 {\n    static String normalize(String name) {\n        String cleaned = name.trim();\n        String result = cleaned.toUpperCase(java.util.Locale.ROOT);\n        return result;\n    }\n    public static void main(String[] args) throws Exception {\n        String actual = normalize(\"  Ada \");\n        String expected = \"ADA\";\n        boolean passed = actual.equals(expected);\n        System.out.println(passed);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. trim 不修改原字符串；每个字符串按课程简化写直接值，不建立字符串池。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "actual",
+              "name": "actual",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "actual-u0",
+                  "value": "\"ADA\""
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "expected",
+              "name": "expected",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "expected-u0",
+                  "value": "\"ADA\""
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "passed",
+              "name": "passed",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "passed-u0",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "normalize",
+        "name": "normalize",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "actual",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "normalize-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "name",
+              "name": "name",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "name-u0",
+                  "value": "\"  Ada \""
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "cleaned",
+              "name": "cleaned",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "cleaned-u0",
+                  "value": "\"Ada\""
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "result",
+              "name": "result",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "result-u0",
+                  "value": "\"ADA\""
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "true"
+      }
+    ]
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-2 BFS：入队时标记",
+  "language": "java",
+  "code": "public class P0902 {\n    public static void main(String[] args) throws Exception {\n        int[][] graph = {{1, 2}, {2}, {}};\n        int[] queue = new int[3];\n        boolean[] seen = new boolean[3];\n        int head = 0;\n        int tail = 0;\n        queue[tail] = 0;\n        tail++;\n        seen[0] = true;\n        while (head < tail) {\n            int vertex = queue[head];\n            head++;\n            System.out.println(vertex);\n            for (int next : graph[vertex]) {\n                if (!seen[next]) {\n                    seen[next] = true;\n                    queue[tail] = next;\n                    tail++;\n                }\n            }\n        }\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 处理顶点 0 时先后入队 1 和 2；处理 1 时发现 2 已标记。队列为固定数组，出队只增加 head，不清空旧元素。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "graph",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "graph-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "queue",
+              "name": "queue",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "queue-u0",
+                  "value": "0x104"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "seen",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "seen-u0",
+                  "value": "0x105"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "head",
+              "name": "head",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u0",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u1",
+                  "value": "1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u2",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u3",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "tail",
+              "name": "tail",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tail-u0",
+                  "value": "0"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tail-u1",
+                  "value": "1"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tail-u2",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tail-u3",
+                  "value": "3"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "bfs",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "vertex",
+                  "name": "vertex",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "vertex-u0",
+                      "value": "0"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "vertex-u1",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "vertex-u2",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "kind": "scope",
+                  "scopeId": "neighbors",
+                  "scopeState": "released",
+                  "items": [
+                    {
+                      "kind": "variable",
+                      "variableId": "next",
+                      "name": "next",
+                      "valueUpdates": [
+                        {
+                          "kind": "value-update",
+                          "valueUpdateId": "next-u0",
+                          "value": "1"
+                        },
+                        {
+                          "kind": "value-update",
+                          "valueUpdateId": "next-u1",
+                          "value": "2"
+                        },
+                        {
+                          "kind": "value-update",
+                          "valueUpdateId": "next-u2",
+                          "value": "2"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "int[][]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "r0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r0-u0",
+                "value": "0x101"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "r1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r1-u0",
+                "value": "0x102"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "r2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r2-u0",
+                "value": "0x103"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e00",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e00-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e01",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e01-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e10",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e10-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x103",
+        "memoryAddress": "0x103",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": []
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x104",
+        "memoryAddress": "0x104",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "q0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q0-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q0-u1",
+                "value": "0"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "q1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q1-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q1-u1",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "q2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q2-u0",
+                "value": "0"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "q2-u1",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x105",
+        "memoryAddress": "0x105",
+        "objectType": "boolean[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "s0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s0-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s0-u1",
+                "value": "true"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "s1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u1",
+                "value": "true"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "s2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u1",
+                "value": "true"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "0"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "1"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-2",
+        "value": "2"
+      }
+    ]
+  }
+}

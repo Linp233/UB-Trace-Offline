@@ -1,0 +1,146 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-2 同一方法的两次调用",
+  "language": "java",
+  "code": "public class P0102 {\n    static int triple(int input) {\n        int out = input * 3;\n        return out;\n    }\n    public static void main(String[] args) throws Exception {\n        int a = 2;\n        int b = triple(a);\n        a = triple(b);\n        System.out.println(a + b);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 第二次调用的 input 是 b 的值 6；调用帧不能合并。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "a",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "2"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u1",
+                  "value": "18"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "b",
+              "name": "b",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "b-u0",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "t1",
+        "name": "triple",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "b",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "t1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "p1",
+              "name": "input",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "p1-u0",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "o1",
+              "name": "out",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "o1-u0",
+                  "value": "6"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "t2",
+        "name": "triple",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "a",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "t2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "p2",
+              "name": "input",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "p2-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "o2",
+              "name": "out",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "o2-u0",
+                  "value": "18"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "24"
+      }
+    ]
+  }
+}

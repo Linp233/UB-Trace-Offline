@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-3 double 容差测试 — 练习",
+  "language": "java",
+  "code": "public class P0703 {\n    static boolean near(double actual, double expected, double epsilon) {\n        double diff = Math.abs(actual - expected);\n        return diff <= epsilon;\n    }\n    public static void main(String[] args) throws Exception {\n        double actual = 0.1 + 0.2;\n        boolean exact = actual == 0.3;\n        boolean passed = near(actual, 0.3, 1e-9);\n        System.out.println(exact + \":\" + passed);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 记录真实 double 值，不把 0.1+0.2 写成精确的 0.3。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

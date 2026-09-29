@@ -1,0 +1,486 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "09-3 DFS：已访问顶点的再次调用",
+  "language": "java",
+  "code": "public class P0903 {\n    static void dfs(int[][] graph, boolean[] seen, int vertex) {\n        if (seen[vertex]) return;\n        seen[vertex] = true;\n        System.out.println(vertex);\n        for (int next : graph[vertex]) {\n            dfs(graph, seen, next);\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        int[][] graph = {{1, 2}, {2}, {}};\n        boolean[] seen = new boolean[3];\n        dfs(graph, seen, 0);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 调用进入顺序为 dfs(0)、dfs(1)、dfs(2)、dfs(2)。最后一次立即返回，不能多输出一个 2，也不能省掉这个调用帧。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "graph",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "graph-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "seen",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "seen-u0",
+                  "value": "0x104"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "d0",
+        "name": "dfs",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "d0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "pg0",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pg0-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ps0",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ps0-u0",
+                  "value": "0x104"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v0",
+              "name": "vertex",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "v0-u0",
+                  "value": "0"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "loop0",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "next0",
+                  "name": "next",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "next0-u0",
+                      "value": "1"
+                    },
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "next0-u1",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "d1",
+        "name": "dfs",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "d1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "pg1",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pg1-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ps1",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ps1-u0",
+                  "value": "0x104"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v1",
+              "name": "vertex",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "v1-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "scope",
+              "scopeId": "loop1",
+              "scopeState": "released",
+              "items": [
+                {
+                  "kind": "variable",
+                  "variableId": "next1",
+                  "name": "next",
+                  "valueUpdates": [
+                    {
+                      "kind": "value-update",
+                      "valueUpdateId": "next1-u0",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "d2",
+        "name": "dfs",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "d2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "pg2",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pg2-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ps2",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ps2-u0",
+                  "value": "0x104"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v2",
+              "name": "vertex",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "v2-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "d3",
+        "name": "dfs",
+        "totalStackFramesAtInsert": 4,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "d3-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "pg3",
+              "name": "graph",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pg3-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "ps3",
+              "name": "seen",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "ps3-u0",
+                  "value": "0x104"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v3",
+              "name": "vertex",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "v3-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "int[][]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "r0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r0-u0",
+                "value": "0x101"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "r1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r1-u0",
+                "value": "0x102"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "r2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "r2-u0",
+                "value": "0x103"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e00",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e00-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "e01",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e01-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "e10",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "e10-u0",
+                "value": "2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x103",
+        "memoryAddress": "0x103",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": []
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x104",
+        "memoryAddress": "0x104",
+        "objectType": "boolean[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "s0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s0-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s0-u1",
+                "value": "true"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "s1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s1-u1",
+                "value": "true"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "s2",
+            "name": "2",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u0",
+                "value": "false"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "s2-u1",
+                "value": "true"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "0"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "1"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-2",
+        "value": "2"
+      }
+    ]
+  }
+}

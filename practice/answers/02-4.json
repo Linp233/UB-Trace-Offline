@@ -1,0 +1,144 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-4 参数重新绑定与原数组修改",
+  "language": "java",
+  "code": "public class P0204 {\n    static void edit(int[] p) {\n        p[1] = 9;\n        p = new int[]{4};\n    }\n    public static void main(String[] args) throws Exception {\n        int[] data = {1, 2};\n        edit(data);\n        System.out.println(data[1]);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 第一个数组的元素被改为 9；p 随后改指第二个数组，data 仍指第一个。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "data",
+              "name": "data",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "data-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "edit",
+        "name": "edit",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "edit-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "p",
+              "name": "p",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "p-u0",
+                  "value": "0x100"
+                },
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "p-u1",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "h0",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "h0-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "h1",
+            "name": "1",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "h1-u0",
+                "value": "2"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "h1-u1",
+                "value": "9"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "int[]",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "h2",
+            "name": "0",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "h2-u0",
+                "value": "4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "9"
+      }
+    ]
+  }
+}

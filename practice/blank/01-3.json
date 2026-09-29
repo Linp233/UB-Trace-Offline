@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-3 短路与分支作用域 — 练习",
+  "language": "java",
+  "code": "public class P0103 {\n    public static void main(String[] args) throws Exception {\n        int x = 3;\n        boolean hit = x > 5 && ++x > 0;\n        if (!hit) {\n            int bonus = 4;\n            x += bonus;\n        } else {\n            x = 100;\n        }\n        System.out.println(x);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 判断 ++x 是否执行，并保留实际进入分支的局部变量。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

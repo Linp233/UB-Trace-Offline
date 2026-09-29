@@ -1,0 +1,139 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-3 double 容差测试",
+  "language": "java",
+  "code": "public class P0703 {\n    static boolean near(double actual, double expected, double epsilon) {\n        double diff = Math.abs(actual - expected);\n        return diff <= epsilon;\n    }\n    public static void main(String[] args) throws Exception {\n        double actual = 0.1 + 0.2;\n        boolean exact = actual == 0.3;\n        boolean passed = near(actual, 0.3, 1e-9);\n        System.out.println(exact + \":\" + passed);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 精确相等失败，但差值小于容差；Math.abs 的库内部不展开。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "actual",
+              "name": "actual",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "actual-u0",
+                  "value": "0.30000000000000004"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "exact",
+              "name": "exact",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "exact-u0",
+                  "value": "false"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "passed",
+              "name": "passed",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "passed-u0",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "near",
+        "name": "near",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "passed",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "near-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "a",
+              "name": "actual",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "a-u0",
+                  "value": "0.30000000000000004"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "e",
+              "name": "expected",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "e-u0",
+                  "value": "0.3"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "eps",
+              "name": "epsilon",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "eps-u0",
+                  "value": "1.0E-9"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "diff",
+              "name": "diff",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "diff-u0",
+                  "value": "5.551115123125783E-17"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "false:true"
+      }
+    ]
+  }
+}

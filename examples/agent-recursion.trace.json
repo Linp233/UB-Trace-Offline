@@ -1,0 +1,155 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "Agent reference: recursive return destinations",
+  "language": "java",
+  "code": "public class AgentRecursionReference {\n    static int sum(int n) {\n        if (n == 0) {\n            return 0;\n        }\n        int smaller = sum(n - 1);\n        return smaller + n;\n    }\n\n    public static void main(String[] args) {\n        int answer = sum(2);\n        System.out.println(answer);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only; exceptions=none. Original generic example. sum(0) returns 0; sum(1) returns 1; sum(2) returns 3. Each invocation has its own frame and variables. The base case creates no smaller variable.",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "s-global",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "f-main-1",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s-main-1",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "v-main-answer",
+              "name": "answer",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-main-answer-1",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "f-sum-1",
+        "name": "AgentRecursionReference.sum",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "v-main-answer",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s-sum-1",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "v-sum-1-n",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-sum-1-n-1",
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v-sum-1-smaller",
+              "name": "smaller",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-sum-1-smaller-1",
+                  "value": "1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "f-sum-2",
+        "name": "AgentRecursionReference.sum",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "v-sum-1-smaller",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s-sum-2",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "v-sum-2-n",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-sum-2-n-1",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "v-sum-2-smaller",
+              "name": "smaller",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-sum-2-smaller-1",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "f-sum-3",
+        "name": "AgentRecursionReference.sum",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "v-sum-2-smaller",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s-sum-3",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "v-sum-3-n",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "u-sum-3-n-1",
+                  "value": "0"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "3"
+      }
+    ]
+  }
+}

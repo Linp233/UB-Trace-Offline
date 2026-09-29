@@ -1,0 +1,332 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "04-3 绕过中间节点",
+  "language": "java",
+  "code": "public class P0403 {\n    static class Node {\n        int value;\n        Node next;\n        Node(int value, Node next) {\n            this.value = value;\n            this.next = next;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Node tail = new Node(9, null);\n        Node middle = new Node(6, tail);\n        Node head = new Node(1, middle);\n        head.next = middle.next;\n        System.out.println(head.next.value + \":\" + middle.value);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. head.next 改指 tail；middle 仍被局部变量引用，不能删掉。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "tail",
+              "name": "tail",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "tail-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "middle",
+              "name": "middle",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "middle-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "head",
+              "name": "head",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "head-u0",
+                  "value": "0x102"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c0",
+        "name": "Node",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "tail",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c0-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t0",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t0-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv0",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv0-u0",
+                  "value": "9"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pn0",
+              "name": "next",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pn0-u0",
+                  "value": "null"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c1",
+        "name": "Node",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "middle",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t1",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t1-u0",
+                  "value": "0x101"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv1",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv1-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pn1",
+              "name": "next",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pn1-u0",
+                  "value": "0x100"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "c2",
+        "name": "Node",
+        "totalStackFramesAtInsert": 3,
+        "returnsToVariableId": "head",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "c2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "t2",
+              "name": "this",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "t2-u0",
+                  "value": "0x102"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pv2",
+              "name": "value",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pv2-u0",
+                  "value": "1"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "pn2",
+              "name": "next",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "pn2-u0",
+                  "value": "0x101"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "Node",
+        "constructorStackFrameId": "c0",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv0",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv0-u0",
+                "value": "9"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hn0",
+            "name": "next",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn0-u0",
+                "value": "null"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x101",
+        "memoryAddress": "0x101",
+        "objectType": "Node",
+        "constructorStackFrameId": "c1",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv1",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv1-u0",
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hn1",
+            "name": "next",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn1-u0",
+                "value": "0x100"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x102",
+        "memoryAddress": "0x102",
+        "objectType": "Node",
+        "constructorStackFrameId": "c2",
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "hv2",
+            "name": "value",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hv2-u0",
+                "value": "1"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "hn2",
+            "name": "next",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn2-u0",
+                "value": "0x101"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "hn2-u1",
+                "value": "0x100"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "9:6"
+      }
+    ]
+  }
+}

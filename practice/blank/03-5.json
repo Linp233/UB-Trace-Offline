@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-5 this 构造器委托 — 练习",
+  "language": "java",
+  "code": "public class P0305 {\n    static class Box {\n        int value;\n        Box() { this(4);  }\n        Box(int x) {   this.value = x;  }\n    }\n    public static void main(String[] args) throws Exception {\n        Box b = new Box();\n        b.value++;\n        System.out.println(b.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 两次构造器调用共享一个对象；分配关联到外层构造器。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

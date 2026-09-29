@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-1 构造与实例方法 — 练习",
+  "language": "java",
+  "code": "public class P0301 {\n    static class Box {\n        int value;\n        Box(int x) {   this.value = x;  }\n        int add(int delta) {\n            this.value += delta;\n            return this.value;\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        Box b = new Box(3);\n        int result = b.add(2);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 画出 this、形参和字段历史；区分局部值与对象状态。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

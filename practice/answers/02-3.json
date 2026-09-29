@@ -1,0 +1,104 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "02-3 HashMap 同键覆盖",
+  "language": "java",
+  "code": "public class P0203 {\n    public static void main(String[] args) throws Exception {\n        java.util.HashMap<String, Integer> map = new java.util.HashMap<>();\n        map.put(\"red\", 2);\n        map.put(\"blue\", 5);\n        int old = map.put(\"red\", map.get(\"blue\") + 1);\n        System.out.println(map.get(\"red\") + \":\" + old);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 同一键对应一行历史；本题不打印或遍历整个 map，输出顺序确定。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "map",
+              "name": "map",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "map-u0",
+                  "value": "0x100"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "old",
+              "name": "old",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "old-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [
+      {
+        "kind": "heap-object",
+        "heapObjectId": "heap-0x100",
+        "memoryAddress": "0x100",
+        "objectType": "HashMap<String, Integer>",
+        "constructorStackFrameId": null,
+        "variables": [
+          {
+            "kind": "variable",
+            "variableId": "red",
+            "name": "\"red\"",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "red-u0",
+                "value": "2"
+              },
+              {
+                "kind": "value-update",
+                "valueUpdateId": "red-u1",
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "kind": "variable",
+            "variableId": "blue",
+            "name": "\"blue\"",
+            "valueUpdates": [
+              {
+                "kind": "value-update",
+                "valueUpdateId": "blue-u0",
+                "value": "5"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "6:2"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "03-3 对象参数的修改与重新绑定 — 练习",
+  "language": "java",
+  "code": "public class P0303 {\n    static class Box {\n        int value;\n        Box(int x) {\n            this.value = x;\n        }\n    }\n    static void redirect(Box p) {\n        p.value = 8;\n        p = new Box(2);\n        p.value = 3;\n    }\n    public static void main(String[] args) throws Exception {\n        Box a = new Box(5);\n        redirect(a);\n        System.out.println(a.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 方法返回后保留两个堆对象及已结束调用帧。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

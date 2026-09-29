@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "10-5 提前结束的线性查找 — 练习",
+  "language": "java",
+  "code": "public class P1005 {\n    public static void main(String[] args) throws Exception {\n        int[] data = {5, 8, 2, 9};\n        int target = 2;\n        int count = 0;\n        int found = -1;\n        for (int i = 0; i < data.length; i++) {\n            count++;\n            if (data[i] == target) {\n                found = i;\n                break;\n            }\n        }\n        System.out.println(count + \":\" + found);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. count 表示实际检查了多少个数组元素；break 后没有 i++。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

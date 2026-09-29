@@ -1,0 +1,158 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "07-2 通过一个测试不代表实现正确",
+  "language": "java",
+  "code": "public class P0702 {\n    static int square(int n) {  return n + n; }\n    public static void main(String[] args) throws Exception {\n        int expected = 9;\n        int actual = square(3);\n        boolean first = actual == expected;\n        int other = square(2);\n        boolean second = other == 4;\n        System.out.println(first);\n        System.out.println(second);\n    }\n}\n",
+  "notes": "profile=cse116-java-2026-09-28; checkpoint=normal program exit; input=none; args=omitted (unused); histories=retained; loopLocals=grouped by declaration; fieldDefaults=observable-only. 实际代码计算 n+n：输入 3 时错误，输入 2 时碰巧与平方相同。 ",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "globals",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "main",
+        "name": "main",
+        "totalStackFramesAtInsert": 0,
+        "returnsToVariableId": null,
+        "scope": {
+          "kind": "scope",
+          "scopeId": "main-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "expected",
+              "name": "expected",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "expected-u0",
+                  "value": "9"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "actual",
+              "name": "actual",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "actual-u0",
+                  "value": "6"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "first",
+              "name": "first",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "first-u0",
+                  "value": "false"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "other",
+              "name": "other",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "other-u0",
+                  "value": "4"
+                }
+              ]
+            },
+            {
+              "kind": "variable",
+              "variableId": "second",
+              "name": "second",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "second-u0",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s1",
+        "name": "square",
+        "totalStackFramesAtInsert": 1,
+        "returnsToVariableId": "actual",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s1-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n1",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n1-u0",
+                  "value": "3"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "kind": "stack-frame",
+        "stackFrameId": "s2",
+        "name": "square",
+        "totalStackFramesAtInsert": 2,
+        "returnsToVariableId": "other",
+        "scope": {
+          "kind": "scope",
+          "scopeId": "s2-scope",
+          "scopeState": "released",
+          "items": [
+            {
+              "kind": "variable",
+              "variableId": "n2",
+              "name": "n",
+              "valueUpdates": [
+                {
+                  "kind": "value-update",
+                  "valueUpdateId": "n2-u0",
+                  "value": "2"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "heapObjects": [],
+    "ioLines": [
+      {
+        "kind": "io-line",
+        "ioLineId": "io-0",
+        "value": "false"
+      },
+      {
+        "kind": "io-line",
+        "ioLineId": "io-1",
+        "value": "true"
+      }
+    ]
+  }
+}

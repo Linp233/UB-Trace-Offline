@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "01-2 同一方法的两次调用 — 练习",
+  "language": "java",
+  "code": "public class P0102 {\n    static int triple(int input) {\n        int out = input * 3;\n        return out;\n    }\n    public static void main(String[] args) throws Exception {\n        int a = 2;\n        int b = triple(a);\n        a = triple(b);\n        System.out.println(a + b);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 分别画出两个 triple 调用帧，并连接直接返回目标。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

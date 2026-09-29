@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-3 递归计算节点数 — 练习",
+  "language": "java",
+  "code": "public class P0803 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n    static int size(Node node) {\n        if (node == null) return 0;\n        int leftSize = size(node.left);\n        int rightSize = size(node.right);\n        return 1 + leftSize + rightSize;\n    }\n    public static void main(String[] args) throws Exception {\n        Node left = new Node(1, null, null);\n        Node right = new Node(3, null, null);\n        Node root = new Node(2, left, right);\n        int result = size(root);\n        System.out.println(result);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 返回值分别回到直接调用者的 leftSize 或 rightSize。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

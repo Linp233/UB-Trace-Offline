@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "05-1 super 初始化同一个对象 — 练习",
+  "language": "java",
+  "code": "public class P0501 {\n    static class Base {\n        int value;\n        Base(int x) {   value = x;  }\n    }\n    static class Child extends Base {\n        int bonus;\n        Child(int x, int bonus) { super(x);    this.bonus = bonus;  }\n        int total() {  return value + bonus; }\n    }\n    public static void main(String[] args) throws Exception {\n        Child c = new Child(2, 4);\n        int result = c.total();\n        System.out.println(result);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 父构造器与子构造器分别建帧，但只创建一个 Child。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

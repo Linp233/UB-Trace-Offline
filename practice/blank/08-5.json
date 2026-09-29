@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-5 递归 BST 插入 — 练习",
+  "language": "java",
+  "code": "public class P0805 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n    static Node insert(Node node, int value) {\n        if (node == null) {\n            Node made = new Node(value, null, null);\n            return made;\n        }\n        if (value < node.value) {\n            node.left = insert(node.left, value);\n        }\n        return node;\n    }\n    public static void main(String[] args) throws Exception {\n        Node root = new Node(5, null, null);\n        root = insert(root, 3);\n        System.out.println(root.left.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 跟踪新节点、父节点 left 字段以及重复赋回 root。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

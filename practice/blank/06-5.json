@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "06-5 用比较器排序两个元素 — 练习",
+  "language": "java",
+  "code": "public class P0605 {\n    static class Desc implements java.util.Comparator<Integer> {\n        Desc() {  }\n        public int compare(Integer a, Integer b) {    return b - a; }\n    }\n    public static void main(String[] args) throws Exception {\n        java.util.Comparator<Integer> cmp = new Desc();\n        int[] data = {2, 7};\n        int order = cmp.compare(data[0], data[1]);\n        if (order > 0) {\n            int temp = data[0];\n            data[0] = data[1];\n            data[1] = temp;\n        }\n        System.out.println(java.util.Arrays.toString(data));\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. 算法步骤在源码中固定，不能假设库排序的调用次数。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}

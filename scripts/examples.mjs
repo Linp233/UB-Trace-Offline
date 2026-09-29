@@ -56,3 +56,4 @@ for (let i=0; i<diagrams.length; i++) {
   await fs.writeFile(path.join(root,`dist/examples/practice${i+1}.json`),JSON.stringify(normalizeDocument(doc),null,2)+'\n');
 }
 console.log('Generated three generic demonstration documents.');
+await import('./agent-examples.mjs');

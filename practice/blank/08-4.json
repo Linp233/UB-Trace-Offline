@@ -1,0 +1,20 @@
+{
+  "format": "ub-trace-offline/v1",
+  "title": "08-4 迭代 BST 查找 — 练习",
+  "language": "java",
+  "code": "public class P0804 {\n    static class Node {\n        int value;\n        Node left, right;\n        Node(int value, Node left, Node right) {\n            this.value = value;\n            this.left = left;\n            this.right = right;\n        }\n    }\n    static Node find(Node node, int target) {\n        while (node != null) {\n            if (node.value == target) return node;\n            node = target < node.value ? node.left : node.right;\n        }\n        return null;\n    }\n    public static void main(String[] args) throws Exception {\n        Node left = new Node(1, null, null);\n        Node right = new Node(3, null, null);\n        Node root = new Node(2, left, right);\n        Node found = find(root, 3);\n        System.out.println(found.value);\n    }\n}\n",
+  "notes": "Unsolved practice; trace to normal program exit. node 参数会重新绑定，树的字段没有改变。",
+  "trace": {
+    "kind": "trace",
+    "version": "1_0_0",
+    "globalVariables": {
+      "kind": "scope",
+      "scopeId": "scope-1",
+      "scopeState": "active",
+      "items": []
+    },
+    "stackFrames": [],
+    "heapObjects": [],
+    "ioLines": []
+  }
+}
