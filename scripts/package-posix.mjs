@@ -1,0 +1,63 @@
+import fs from 'node:fs';
+import fsp from 'node:fs/promises';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {createHash,randomUUID} from 'node:crypto';
+import {audit} from './audit.mjs';
+import {fileDigest,tarDigest,assertSame} from './runtime-integrity.mjs';
+const root=path.resolve(import.meta.dirname,'..');
+const stage=path.join(root,'.release-build',`posix-stage-${randomUUID()}`);
+const runtimes=path.join(root,'.release-build','runtimes');
+const releases=path.join(root,'releases');
+const version=(await fsp.readFile(path.join(root,'VERSION'),'utf8')).trim();
+const cache=path.resolve(process.argv[2]||path.join(root,'.release-build','downloads'));
+const sums=await fsp.readFile(path.join(cache,'SHASUMS256.txt'),'utf8');
+const files=['VERSION','CHANGELOG.md','README.md','README.zh-CN.md','AGENT-START.md','SCHEMA.md','CSE116-TRACE-GUIDE.md','LICENSE','THIRD-PARTY.md','LICENSE-STATUS.md','Start-Tracing.sh','Stop-Tracing.sh','Start-Tracing.command','Stop-Tracing.command','config.json','config.mjs','server.mjs'];
+const dirs=['dist','lib','tools','examples','practice','licenses'];
+await fsp.mkdir(stage,{recursive:true});await fsp.mkdir(releases,{recursive:true});
+const targets=['darwin-arm64','darwin-x64','linux-x64','linux-arm64'];
+const chosen=process.argv.indexOf('--target');
+if(chosen>=0&&!targets.includes(process.argv[chosen+1]))throw Error('Unknown target');
+for(const target of chosen>=0?[process.argv[chosen+1]]:targets){
+  const label=target.replace('darwin','macos');
+  const name=`Tracing-Offline-v${version}-${label}`;
+  const destination=path.join(stage,name);
+  const officialName=`node-v24.21.0-${target}.tar.xz`;
+  const officialArchive=path.join(cache,officialName);
+  const expected=sums.split(/\r?\n/).filter(line=>line.endsWith(`  ${officialName}`));
+  if(expected.length!==1||(await fileDigest(officialArchive)).sha256!==expected[0].slice(0,64))throw Error(`Official archive checksum mismatch: ${target}`);
+  const official=await tarDigest(officialArchive,`node-v24.21.0-${target}/bin/node`,'xz');
+  assertSame(await fileDigest(path.join(runtimes,target,'runtime','node')),official,`${target} prepared runtime`);
+  await fsp.rm(destination,{recursive:true,force:true});await fsp.mkdir(destination);
+  for(const file of files)await fsp.copyFile(path.join(root,file),path.join(destination,file));
+  for(const dir of dirs)await fsp.cp(path.join(root,dir),path.join(destination,dir),{recursive:true});
+  await fsp.cp(path.join(runtimes,target,'runtime'),path.join(destination,'runtime'),{recursive:true});
+  await fsp.mkdir(path.join(destination,'scripts'));
+  await fsp.copyFile(path.join(root,'scripts/posix-launcher.mjs'),path.join(destination,'scripts/posix-launcher.mjs'));
+  for(const launcher of files.filter(x=>x.endsWith('.sh')||x.endsWith('.command')))await fsp.chmod(path.join(destination,launcher),0o755);
+  await fsp.chmod(path.join(destination,'runtime/node'),0o755);
+  assertSame(await fileDigest(path.join(destination,'runtime/node')),official,`${target} staged runtime`);
+  const provenance=JSON.parse(await fsp.readFile(path.join(destination,'runtime/PROVENANCE.json'),'utf8'));
+  if(provenance.archiveSha256!==expected[0].slice(0,64)||provenance.executableBytes!==official.bytes||provenance.executableSha256!==official.sha256)throw Error(`${target} provenance mismatch`);
+  execFileSync(process.execPath,[path.join(root,'scripts/audit.mjs'),'--package',destination,'--manifest'],{stdio:'inherit'});
+  const archive=path.join(releases,name+'.tar.gz');
+  execFileSync('tar',['--ignore-failed-read','--warning=no-file-changed','-czf',archive,'-C',stage,name]);
+  assertSame(await tarDigest(archive,`${name}/runtime/node`,'gz'),official,`${target} final tar.gz runtime`);
+  // Extract the completed archive and compare every byte hash against its manifest.
+  const verifyRoot=path.join(root,'.release-build','verify',name);
+  await fsp.rm(verifyRoot,{recursive:true,force:true});await fsp.mkdir(verifyRoot,{recursive:true});
+  try{
+    const names=execFileSync('tar',['-tzf',archive],{encoding:'utf8'}).trim().split('\n');
+    if(names.some(entry=>!(entry===`${name}/`||entry.startsWith(`${name}/`))||entry.includes('/../')||entry.startsWith('/')))throw Error(`Unsafe archive path: ${target}`);
+    execFileSync('tar',['--no-same-owner','-xzf',archive,'-C',verifyRoot]);
+    const extracted=path.join(verifyRoot,name);
+    const manifest=JSON.parse(await fsp.readFile(path.join(extracted,'release-manifest.json'),'utf8'));
+    const entries=(await audit(extracted,{packaged:true})).entries.filter(item=>item.path!=='release-manifest.json');
+    if(JSON.stringify(entries)!==JSON.stringify(manifest.files))throw Error(`${target} final archive manifest mismatch`);
+    assertSame(await fileDigest(path.join(extracted,'runtime','node')),official,`${target} freshly extracted archive runtime`);
+  }finally{await fsp.rm(verifyRoot,{recursive:true,force:true});}
+  const digest=createHash('sha256').update(fs.readFileSync(archive)).digest('hex');
+  await fsp.writeFile(archive+'.sha256',`${digest}  ${name}.tar.gz\n`);
+  await fsp.copyFile(path.join(destination,'release-manifest.json'),path.join(releases,name+'.manifest.json'));
+  console.log(`${name}: ${digest}`);
+}

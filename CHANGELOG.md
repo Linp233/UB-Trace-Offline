@@ -1,5 +1,11 @@
 # Changelog / 更新记录
 
+## v0.1.2 — Portable macOS and Linux launchers
+
+- Add four offline packages using checksum-verified official Node.js 24.21.0 runtimes.
+- Add installation-scoped foreground start/stop launchers, POSIX packaging and runtime provenance.
+- Preserve the trace editor, English-first language selection, Windows workflow and 50 exercises.
+
 ## v0.1.1 — 2026-09-28
 
 - English is now the default interface. Added a first-run language chooser and a persistent Language setting for English / Simplified Chinese.

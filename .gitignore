@@ -24,3 +24,5 @@
 Thumbs.db
 Desktop.ini
 .DS_Store
+/runtime/node
+*.tar.gz

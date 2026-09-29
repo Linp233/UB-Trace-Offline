@@ -1,8 +1,8 @@
-# Tracing Offline — Windows Portable
+# Tracing Offline — Portable
 
 **English** | [简体中文](README.zh-CN.md)
 
-**Version: v0.1.1** · [Release notes](CHANGELOG.md) · [Download Windows portable ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1.1/Tracing-Offline-v0.1.1-windows-x64.zip)
+**Version: v0.1.2** · [Release notes](CHANGELOG.md)
 
 A local editor for practicing stack, heap and I/O diagrams. This distribution retains the published UB Trace Tool frontend and adds local saving, JSON import/export and PNG export. It does not execute or grade source code.
 
@@ -13,6 +13,16 @@ A local editor for practicing stack, heap and I/O diagrams. This distribution re
 This version grew out of a need to practice off campus during Fall 2026. The project author reports needing UB VPN to access [UB Trace](https://tracing.cse.buffalo.edu/) from off campus, adding a network requirement to everyday practice. The offline version keeps trace editing, saving, importing and exporting on the user's computer so practice can continue without a campus connection or VPN.
 
 The distribution also includes a public [AI / Agent starting guide (AGENT-START.md)](AGENT-START.md). Give that guide, its linked tracing rules and JSON specification, and the complete Java source to a third-party AI tool such as ChatGPT or Claude to generate a trace JSON with stack frames, heap objects, value histories and I/O under explicit conventions. After starting the app, open the default address [http://127.0.0.1:4173/](http://127.0.0.1:4173/) and choose “Import JSON” or “Paste diagram” to view, edit and compare it with your own trace. If you changed the port, use the address opened by the launcher. AI answers still need review; the editor displays diagrams and does not grade program semantics.
+
+## macOS and Linux portable packages
+
+Choose the archive matching your OS and CPU: `macos-arm64` for Apple Silicon, `macos-x64` for Intel Macs, `linux-x64` for x86-64, or `linux-arm64` for 64-bit ARM Linux. Extract the complete `.tar.gz` to a writable folder. On macOS double-click `Start-Tracing.command`, or run `./Start-Tracing.command` from Terminal; use `Stop-Tracing.command` to stop. On Linux run `./Start-Tracing.sh` and `./Stop-Tracing.sh`. The terminal stays open while serving. Use `--no-browser` with the start launcher for headless operation; otherwise it invokes `open` or `xdg-open` and prints the local URL if browser opening fails. No npm install or separately installed Node.js is required.
+
+`config.json` is the only port setting. Stop the app before editing it. To upgrade, extract the new release into a separate writable directory and copy your old `data/` directory into it while both installations are stopped; preserve browser site storage if keeping the same port. Do not copy data into a release archive.
+
+These archives were packaged and statically inspected on Linux x64. Only Linux x64 was executed in this build environment; macOS execution and signing/notarization were not tested. Node.js 24 official binaries require macOS 13.5 or later, or on GNU/Linux glibc 2.28 or later. Node's platform support also lists Linux kernel 4.18 or later; use a maintained OS. See the [Node.js 22-to-24 migration note](https://nodejs.org/en/blog/migrations/v22-to-v24) and [Node.js supported platforms](https://github.com/nodejs/node/blob/v24.x/BUILDING.md).
+
+To prepare and package from source on a POSIX build host, run `node scripts/prepare-runtime.mjs [download-cache-directory]` and `node scripts/package-posix.mjs`. The first command checks official `SHASUMS256.txt` and every runtime archive before copying the executable and license. The second stages explicit allowlisted files in fresh folders and writes `.tar.gz`, `.sha256`, and manifest files under `releases/`.
 
 ## Quick start
 
@@ -25,7 +35,7 @@ Starting again opens the existing service in your browser; the original launcher
 
 The portable ZIP includes Node.js 24 LTS. No Node.js installation, npm install, Java, Python, Git, account or internet connection is needed for normal use. A modern browser and Windows PowerShell are required. The launcher uses the bundled runtime first, with an installed Node.js as fallback when working from a source checkout.
 
-The release is built for Windows x64. Other architectures and clean-machine compatibility have not been certified. Keep the runtime license and provenance files with node.exe.
+The Windows ZIP is built for Windows x64. Its compatibility on other Windows architectures and clean machines has not been certified. Keep the runtime license and provenance files with node.exe. The macOS and Linux archives are described above.
 
 ## Port configuration
 

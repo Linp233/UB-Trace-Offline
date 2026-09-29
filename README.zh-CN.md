@@ -2,11 +2,17 @@
 
 [English](README.md) | **简体中文**
 
-**版本：v0.1.1** · [更新记录](CHANGELOG.md) · [下载 Windows 便携 ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1.1/Tracing-Offline-v0.1.1-windows-x64.zip)
+**版本：v0.1.2** · [更新记录](CHANGELOG.md) · [下载 Windows 便携 ZIP](https://github.com/Linp233/UB-Trace-Offline/releases/download/v0.1.2/Tracing-Offline-v0.1.2-windows-x64.zip)
 
 用于练习 Stack、Heap 和 I/O 图的本地编辑器。保留 UB Trace Tool 已发布的前端，增加本地保存、JSON 导入导出和 PNG 导出。工具不会执行源码或自动判分。
 
 **项目许可：** 本项目自行贡献的部分采用 [MIT 许可证](LICENSE)。第三方内容保留原有许可条件，详见[许可范围](LICENSE-STATUS.md)。
+
+## macOS 与 Linux 便携包
+
+根据系统与 CPU 选择 `macos-arm64`（Apple Silicon）、`macos-x64`（Intel Mac）、`linux-x64` 或 `linux-arm64`。完整解压 `.tar.gz` 到可写目录。macOS 双击 `Start-Tracing.command`，用 `Stop-Tracing.command` 停止；Linux 运行 `./Start-Tracing.sh` 和 `./Stop-Tracing.sh`。启动终端需保持打开。测试时可加 `--no-browser`；正常启动使用 `open` 或 `xdg-open`，失败时终端仍会显示本地网址。内含已验证的官方 Node.js，不必另装 Node 或执行 npm install。
+
+端口只在 `config.json` 中设置；修改前先停止。升级时先关闭两个安装，把旧版 `data/` 复制到新目录。若端口不变，浏览器本地存储也应保留。Node.js 24 官方二进制要求 macOS 13.5 及以上，或 Linux glibc 2.28 及以上；Node 支持表还列出 Linux kernel 4.18 及以上。参见 [Node 24 迁移说明](https://nodejs.org/en/blog/migrations/v22-to-v24) 与 [平台支持表](https://github.com/nodejs/node/blob/v24.x/BUILDING.md)。四包在 Linux x64 上打包并静态校验；仅 Linux x64 在此环境实测运行，未在 macOS 运行、签名或公证。
 
 ## 为什么要做这个版本？
 
@@ -25,7 +31,7 @@
 
 便携 ZIP 已包含 Node.js 24 LTS。日常使用不需要安装 Node.js、运行 npm install、安装 Java、Python 或 Git，也不需要账户或联网。需要现代浏览器和 Windows PowerShell。启动器优先使用随包运行时；从源码目录运行且未带运行时时，才查找系统已安装的 Node.js。
 
-本包针对 Windows x64。其他架构和全新电脑上的兼容性尚未认证。请保留 node.exe 随附的许可证和来源记录。
+此处所述 Windows ZIP 针对 Windows x64；它在其他 Windows 架构及全新电脑上的兼容性尚未认证。请保留 node.exe 随附的许可证和来源记录。macOS 和 Linux 的归档及验证范围见上文。
 
 ## 修改端口
 

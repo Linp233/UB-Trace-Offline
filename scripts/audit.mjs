@@ -6,9 +6,9 @@ import {readVersion} from '../lib/version.mjs';
 
 const sourceRoot=path.resolve(import.meta.dirname,'..');
 const forbiddenTop=new Set(['data','references','.openai','upstream','vendor','node_modules','.vscode','.idea']);
-const skippedSource=new Set(['.git','releases','.release-build']);
+const skippedSource=new Set(['.git','releases','.release-build','data','runtime']);
 const forbiddenExtensions=/\.(log|tmp|bak|class|zip|tgz|map|png|jpg|jpeg|webp|har|pfx|p12|key)$/i;
-const textExtensions=/\.(md|txt|mjs|js|css|json|html|svg|java|ps1|cmd)$/i;
+const textExtensions=/\.(md|txt|mjs|js|css|json|html|svg|java|ps1|cmd|sh|command)$/i;
 const checks=[
   ['personal filesystem path',/\b[A-Z]:[\\/]+(?:Users|STU|Documents and Settings)[\\/]+/i],
   ['Unix home path',/(?:^|[\s"'=:(])\/(?:Users|home)\/[a-zA-Z0-9_.-]+\//],
@@ -58,9 +58,10 @@ if(process.argv[1] && path.resolve(process.argv[1])===fileURLToPath(import.meta.
   const result=await audit(target,{packaged:packageIndex>=0});
   if(process.argv.includes('--manifest')) {
     const runtime=JSON.parse(await fs.readFile(path.join(target,'runtime/PROVENANCE.json'),'utf8'));
-    const executable=result.entries.find(x=>x.path==='runtime/node.exe');
-    if(!executable || executable.sha256!==runtime.executableSha256)throw new Error('Runtime provenance does not match node.exe');
-    const manifest={format:'tracing-offline-release/v1',version:readVersion(target),platform:'win32-x64',projectLicense:'MIT',licenseScope:'Project-owned contributions only; third-party material retains its original rights and terms.',licenseStatus:'upstream-permission-unresolved',runtime,files:result.entries.filter(x=>x.path!=='release-manifest.json')};
+    const runtimeName=runtime.platform==='win32'?'runtime/node.exe':'runtime/node';
+    const executable=result.entries.find(x=>x.path===runtimeName);
+    if(!executable || executable.sha256!==runtime.executableSha256)throw new Error('Runtime provenance does not match '+runtimeName);
+    const manifest={format:'tracing-offline-release/v1',version:readVersion(target),platform:`${runtime.platform}-${runtime.arch}`,projectLicense:'MIT',licenseScope:'Project-owned contributions only; third-party material retains its original rights and terms.',licenseStatus:'upstream-permission-unresolved',runtime,files:result.entries.filter(x=>x.path!=='release-manifest.json')};
     await fs.writeFile(path.join(target,'release-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
   }
   console.log(`Privacy audit passed: ${result.files} files; no forbidden content matched the configured checks.`);

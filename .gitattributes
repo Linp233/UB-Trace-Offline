@@ -8,3 +8,6 @@
 *.svg text eol=lf
 *.ttf binary
 *.exe binary
+*.sh text eol=lf
+*.command text eol=lf
+/runtime/node binary
